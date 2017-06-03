@@ -34,7 +34,7 @@ public class ArtistaController {
 	@GetMapping("/{artistaid}")
 	public String findOne(@PathVariable Long artistaid,Model model){
 		model.addAttribute("albumes",albumService.findByArtista(artistaService.findOne(artistaid)));
-		//model.addAttribute("canciones", cancionService.findByArtista(artistaService.findOne(artistaid)));
+		model.addAttribute("canciones", cancionService.findByArtista(artistaService.findOne(artistaid)));
 		model.addAttribute("artista",artistaService.findOne(artistaid));
 		return "perfilartista";
 	}
