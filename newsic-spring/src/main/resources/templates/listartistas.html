@@ -1,0 +1,212 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<!-- Mirrored from flatfull.com/themes/pulse/artist.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 May 2017 22:08:14 GMT -->
+<head>
+<meta charset="utf-8" />
+<title>lista artistas</title>
+<link rel="apple-touch-icon" href="images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="images/logo.png" />
+<link rel="stylesheet" href="css/animate.css/animate.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="css/glyphicons/glyphicons.css"
+	type="text/css" />
+<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="css/material-design-icons/material-design-icons.css"
+	type="text/css" />
+<link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="css/styles/app.min.css" />
+</head>
+<body>
+	<div class="app dk" id="app">
+		<div id="aside" class="app-aside modal fade nav-dropdown">
+			<div class="left navside grey dk" data-layout="column">
+				<div class="navbar no-radius">
+					<a href="index-2.html" class="navbar-brand md"><svg
+							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32"
+							height="32">
+							<circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.2)" />
+							<circle cx="24" cy="24" r="22" fill="#1c202b" class="brand-color" />
+							<circle cx="24" cy="24" r="10" fill="#ffffff" />
+							<circle cx="13" cy="13" r="2" fill="#ffffff"
+								class="brand-animate" />
+							<path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
+							<circle cx="24" cy="24" r="3" fill="#000000" /></svg> <img
+						src="images/logo.png" alt="." class="hide" /> <span
+						class="hidden-folded inline">pulse</span></a>
+				</div>
+				<!-- PNAEL IZQUIERDO -->
+				<div data-flex="" class="hide-scroll">
+					<nav class="scroll nav-stacked nav-active-primary">
+						<ul class="nav" data-ui-nav="data-ui-nav">
+							<li class="nav-header hidden-folded"><span
+								class="text-xs text-muted">Main</span></li>
+							<li><a href="player.html"><span class="nav-icon"><i
+										class="material-icons">play_circle_outline</i></span> <span
+									class="nav-text">Discover</span></a></li>
+							<li><a href="browse.html"><span class="nav-icon"><i
+										class="material-icons">sort</i></span> <span class="nav-text">Browse</span></a></li>
+							<li><a href="chart.html"><span class="nav-icon"><i
+										class="material-icons">trending_up</i></span> <span class="nav-text">Charts</span></a></li>
+							<li><a href="artist.html"><span class="nav-icon"><i
+										class="material-icons">portrait</i></span> <span class="nav-text">Artist</span></a></li>
+							<li><a data-toggle="modal" data-target="#search-modal"><span
+									class="nav-icon"><i class="material-icons">search</i></span> <span
+									class="nav-text">Search</span></a></li>
+							<li class="nav-header hidden-folded m-t"><span
+								class="text-xs text-muted">Your collection</span></li>
+							<li><a href="profile.html#tracks"><span
+									class="nav-label"><b class="label">8</b></span> <span
+									class="nav-icon"><i class="material-icons">list</i></span> <span
+									class="nav-text">Tracks</span></a></li>
+							<li><a href="profile.html#playlists"><span
+									class="nav-icon"><i class="material-icons">queue_music</i></span>
+									<span class="nav-text">Playlists</span></a></li>
+							<li><a href="profile.html#likes"><span class="nav-icon"><i
+										class="material-icons">favorite_border</i></span> <span
+									class="nav-text">Likes</span></a></li>
+						</ul>
+					</nav>
+				</div>
+
+				<!-- PANEL IZQUIERDO- PARTE INFERIOR -->
+				<div data-flex-no-shrink="data-flex-no-shrink">
+					<div class="nav-fold dropup">
+						<a data-toggle="dropdown"><span class="pull-left"><img
+								src="images/a3.jpg" alt="..." class="w-32 img-circle" /></span> <span
+							class="clear hidden-folded p-x p-y-xs"><span
+								class="block _500 text-ellipsis">Rachel Platten</span></span></a>
+						<div class="dropdown-menu w dropdown-menu-scale">
+							<a class="dropdown-item" href="profile.html#profile"><span>Profile</span></a>
+							<a class="dropdown-item" href="profile.html#tracks"><span>Tracks</span></a>
+							<a class="dropdown-item" href="profile.html#playlists"><span>Playlists</span></a>
+							<a class="dropdown-item" href="profile.html#likes"><span>Likes</span></a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="docs.html">Need help?</a> <a
+								class="dropdown-item" href="signin.html">Sign out</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="content" class="app-content white bg box-shadow-z2"
+			role="main">
+			<div class="app-footer app-player grey bg">
+				<div class="playlist" style="width: 100%"></div>
+			</div>
+			<div class="app-body" id="view">
+				<div class="page-content">
+					<div class="row-col">
+						<div class="col-lg-9 b-r no-border-md">
+							<div class="padding">
+								<div class="page-title m-b">
+									<h1 class="inline m-a-0">Artistas</h1>
+									<div class="dropdown inline">
+										<button
+											class="btn btn-sm no-bg h4 m-y-0 v-b dropdown-toggle text-primary"
+											data-toggle="dropdown">By name</button>
+										<div class="dropdown-menu">
+											<a href="#" class="dropdown-item active">By name</a> <a
+												href="#" class="dropdown-item">Songs</a>
+										</div>
+									</div>
+								</div>
+								<div data-ui-jp="jscroll"
+									data-ui-options="{autoTrigger: false,
+									 
+									  padding: 50,
+									   nextSelector: 'a.jscroll-next:last'}">
+
+
+									<div class="row row-lg">
+										<!-- LISTA DE ARTISTAS -->
+										<div class="col-xs-4 col-sm-4 col-md-3"
+											th:each="artista:${artistas}">
+											<div class="item">
+												<div class="item-media rounded">
+													<!-- LINK AL ARTISTA -->
+													<a th:href="${'/artistas/' + artista.artistaid}" class="item-media-content"
+														style="background-image: url('images/a6.jpg')"></a>
+														
+												</div>
+												<div class="item-info text-center">
+													<div class="item-title text-ellipsis">
+														<a href="artist.detail.html"
+															th:text="${artista.nombreartistico}"></a>
+														<div class="text-sm text-muted">23 songs</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<a href="scroll.author.html"
+										class="btn btn-sm white rounded jscroll-next">Show More</a>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-lg-3 w-xxl w-auto-md">
+							<div class="padding" style="bottom: 60px"
+								data-ui-jp="stick_in_parent">
+								<h6 class="text text-muted">5 Likes</h6>
+								<div class="row item-list item-list-sm m-b">
+									<div class="col-xs-12">
+										<div class="item r" data-id="item-11"
+											data-src="http://api.soundcloud.com/tracks/218060449/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+											<div class="item-media">
+												<a href="track.detail.html" class="item-media-content"
+													style="background-image: url('images/b10.jpg')"></a>
+											</div>
+											<div class="item-info">
+												<div class="item-title text-ellipsis">
+													<a href="track.detail.html">Spring</a>
+												</div>
+												<div class="item-author text-sm text-ellipsis">
+													<a href="artist.detail.html" class="text-muted">Pablo
+														Nouvelle</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<h6 class="text text-muted">Go mobile</h6>
+								<div class="btn-groups">
+									<a href="#" class="btn btn-sm dark lt m-r-xs"
+										style="width: 135px"><span class="pull-left m-r-sm"><i
+											class="fa fa-apple fa-2x"></i></span> <span
+										class="clear text-left l-h-1x"><span
+											class="text-muted text-xxs">Download on the</span> <b
+											class="block m-b-xs">App Store</b></span></a> <a href="#"
+										class="btn btn-sm dark lt" style="width: 133px"><span
+										class="pull-left m-r-sm"><i class="fa fa-play fa-2x"></i></span>
+										<span class="clear text-left l-h-1x"><span
+											class="text-muted text-xxs">Get it on</span> <b
+											class="block m-b-xs m-r-xs">Google Play</b></span></a>
+								</div>
+								<div class="b-b m-y"></div>
+								<div class="nav text-sm _600">
+									<a href="#" class="nav-link text-muted m-r-xs">About</a> <a
+										href="#" class="nav-link text-muted m-r-xs">Contact</a> <a
+										href="#" class="nav-link text-muted m-r-xs">Legal</a> <a
+										href="#" class="nav-link text-muted m-r-xs">Policy</a>
+								</div>
+								<p class="text-muted text-xs p-b-lg">&copy; Copyright 2016</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<script src="scripts/app.min.js"></script>
+</body>
+<!-- Mirrored from flatfull.com/themes/pulse/artist.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 May 2017 22:08:15 GMT -->
+</html>
