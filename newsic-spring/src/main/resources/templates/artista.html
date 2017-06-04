@@ -3,125 +3,40 @@
 <head>
 <meta charset="utf-8"/>
 <title th:text="${artista.nombreartistico}"></title>
-<link rel="apple-touch-icon" href="images/logo.png" />
-<link rel="shortcut icon" sizes="196x196" href="images/logo.png" />
-<link rel="stylesheet" href="css/animate.css/animate.min.css"
+<link rel="apple-touch-icon" href="../images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
+<link rel="stylesheet" href="../css/animate.css/animate.min.css"
 	type="text/css" />
-<link rel="stylesheet" href="css/glyphicons/glyphicons.css"
+<link rel="stylesheet" href="../css/glyphicons/glyphicons.css"
 	type="text/css" />
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css"
+<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css"
 	type="text/css" />
 <link rel="stylesheet"
-	href="css/material-design-icons/material-design-icons.css"
+	href="../css/material-design-icons/material-design-icons.css"
 	type="text/css" />
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+<link rel="stylesheet" href="../css/bootstrap/dist/css/bootstrap.min.css"
 	type="text/css" />
-<link rel="stylesheet" href="css/styles/app.min.css" />
+<link rel="stylesheet" href="../css/styles/app.min.css" />
+
+
 </head>
 <body>
 	<div class="app dk" id="app">
-		<div id="aside" class="app-aside modal fade nav-dropdown">
-			<div class="left navside grey dk" data-layout="column">
-				<div class="navbar no-radius">
-					<a href="index-2.html" class="navbar-brand md"><svg
-							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32"
-							height="32">
-							<circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.2)" />
-							<circle cx="24" cy="24" r="22" fill="#1c202b" class="brand-color" />
-							<circle cx="24" cy="24" r="10" fill="#ffffff" />
-							<circle cx="13" cy="13" r="2" fill="#ffffff"
-								class="brand-animate" />
-							<path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
-							<circle cx="24" cy="24" r="3" fill="#000000" /></svg> 
-							
-							<img src="images/logo.png" alt="." class="hide"/> <span
-						class="hidden-folded inline">pulse</span></a>
-				</div>
-				
-				<!-- PANEL IZQUIERDO -->
-				<div data-flex="data-flex" class="hide-scroll">
-					<nav class="scroll nav-stacked nav-active-primary">
-						<ul class="nav" data-ui-nav="data-ui-nav">
-							<li class="nav-header hidden-folded"><span
-								class="text-xs text-muted">Main</span></li>
-							<li><a href="player.html"><span class="nav-icon"><i
-										class="material-icons">play_circle_outline</i></span> <span
-									class="nav-text">Discover</span></a></li>
-							<li><a href="browse.html"><span class="nav-icon"><i
-										class="material-icons">sort</i></span> <span class="nav-text">Browse</span></a></li>
-							<li><a href="chart.html"><span class="nav-icon"><i
-										class="material-icons">trending_up</i></span> <span class="nav-text">Charts</span></a></li>
-							<li><a href="artist.html"><span class="nav-icon"><i
-										class="material-icons">portrait</i></span> <span class="nav-text">Artist</span></a></li>
-							<li><a data-toggle="modal" data-target="#search-modal"><span
-									class="nav-icon"><i class="material-icons">search</i></span> <span
-									class="nav-text">Search</span></a></li>
-							<li class="nav-header hidden-folded m-t"><span
-								class="text-xs text-muted">Your collection</span></li>
-							<li><a href="profile.html#tracks"><span
-									class="nav-label"><b class="label">8</b></span> <span
-									class="nav-icon"><i class="material-icons">list</i></span> <span
-									class="nav-text">Tracks</span></a></li>
-							<li><a href="profile.html#playlists"><span
-									class="nav-icon"><i class="material-icons">queue_music</i></span>
-									<span class="nav-text">Playlists</span></a></li>
-							<li><a href="profile.html#likes"><span class="nav-icon"><i
-										class="material-icons">favorite_border</i></span> <span
-									class="nav-text">Likes</span></a></li>
-						</ul>
-					</nav>
-				</div>
-				
-				<!-- PANEL IZQUIERDO- PARTE INFERIOR -->
-				<div data-flex-no-shrink="data-flex-no-shrink">
-					<div class="nav-fold dropup">
-						<a data-toggle="dropdown"><span class="pull-left"><img
-								src="images/a3.jpg" alt="..." class="w-32 img-circle"/></span> <span
-							class="clear hidden-folded p-x p-y-xs"><span
-								class="block _500 text-ellipsis">Rachel Platten</span></span></a>
-						<div class="dropdown-menu w dropdown-menu-scale">
-							<a class="dropdown-item" href="profile.html#profile"><span>Profile</span></a>
-							<a class="dropdown-item" href="profile.html#tracks"><span>Tracks</span></a>
-							<a class="dropdown-item" href="profile.html#playlists"><span>Playlists</span></a>
-							<a class="dropdown-item" href="profile.html#likes"><span>Likes</span></a>
-							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" href="docs.html">Need help?</a> <a
-								class="dropdown-item" href="signin.html">Sign out</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+
+		<!-- PANEL IZQUIERDO -->
+		<div th:replace="fragment/panelizquierdo"></div>
+		
+        <!-- CONTENIDO -->
 		<div id="content" class="app-content white bg box-shadow-z2"
 			role="main">
-			<div class="app-header hidden-lg-up white lt box-shadow-z1">
-				<div class="navbar">
-					<a href="index-2.html" class="navbar-brand md"><svg
-							xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32"
-							height="32">
-							<circle cx="24" cy="24" r="24" fill="rgba(255,255,255,0.2)" />
-							<circle cx="24" cy="24" r="22" fill="#1c202b" class="brand-color" />
-							<circle cx="24" cy="24" r="10" fill="#ffffff" />
-							<circle cx="13" cy="13" r="2" fill="#ffffff"
-								class="brand-animate" />
-							<path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
-							<circle cx="24" cy="24" r="3" fill="#000000" /></svg> <img
-						src="images/logo.png" alt="." class="hide"/> <span
-						class="hidden-folded inline">pulse</span></a>
-					<ul class="nav navbar-nav pull-right">
-						<li class="nav-item"><a data-toggle="modal"
-							data-target="#aside" class="nav-link"><i
-								class="material-icons">menu</i></a></li>
-					</ul>
-				</div>
-			</div>
+		
 			<div class="app-footer app-player grey bg">
 				<div class="playlist" style="width: 100%"></div>
 			</div>
 			<div class="app-body" id="view">
 				<div class="pos-rlt">
 					<div class="page-bg" data-stellar-ratio="2"
-						style="background-image: url('images/b5.jpg')"></div>
+						style="background-image: url('../images/b5.jpg')"></div>
 				</div>
 				<div class="page-content">
 					<div class="padding b-b">
@@ -130,7 +45,7 @@
 								<div class="item w rounded">
 									<div class="item-media">
 										<div class="item-media-content"
-											style="background-image: url('images/b5.jpg')"></div>
+											th:style="'background-image: url(' + ${artista.rutaimgperfil}   +');'"></div>
 									</div>
 								</div>
 							</div>
@@ -138,7 +53,7 @@
 								<div class="p-l-md no-padding-xs">
 								<!-- TITULO  -->
 									<div class="page-title">
-										<h1 class="inline" th:text="${artista.nombreartistico}"></h1>
+										<h1 class="inline" th:text="${artista.nombre + ' '+ artista.apellido}"></h1>
 										<label class="fa fa-star text-primary text-lg m-b v-m m-l-xs"
 											title="Pro"></label>
 									</div>
@@ -196,7 +111,7 @@
 													data-src="http://api.soundcloud.com/tracks/79031167/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
 													<div class="item-media">
 														<a href="track.detail.html" class="item-media-content"
-															style="background-image: url('images/b2.jpg')"></a>
+															style="background-image: url('../images/b2.jpg')"></a>
 														<div class="item-overlay center">
 															<button class="btn-playpause">Play</button>
 														</div>
@@ -227,14 +142,16 @@
 										
 										<!--TAP POPULAR- ALBUMES POPULARES -->
 										<h5 class="m-b">Albums</h5>
-										<div class="row m-b">
+										<!-- LISTA ALBUMES POPULARES -->
+										<div class="row m-b" >
 										   <!-- ALBUM -->
-											<div class="col-xs-4 col-sm-4 col-md-3" th:each="album:${album}">
+											<div class="col-xs-4 col-sm-4 col-md-3" th:each="album:${albumes}">
 												<div class="item r" data-id="item-10"
 													data-src="http://api.soundcloud.com/tracks/237514750/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
 													<div class="item-media">
-														<a href="track.detail.html" class="item-media-content"
-															style="background-image: url('images/b9.jpg')"></a>
+														<a th:href="${'/albumes/' + album.albumid}" class="item-media-content"
+				
+															th:style="'background-image: url(' + ${album.rutaimgalbum}   +');'"></a>
 														<div class="item-overlay center">
 															<button class="btn-playpause">Play</button>
 														</div>
@@ -247,17 +164,19 @@
 															<div class="dropdown-menu pull-right black lt"></div>
 														</div>
 														<div class="item-title text-ellipsis">
-															<a href="track.detail.html" th:text="album:${album.nombre}"></a>
+															<a href="track.detail.html" th:text="${album.nombre}"></a>
 														</div>
 														
 														<div class="item-author text-sm text-ellipsis hide">
 															<a href="artist.detail.html" class="text-muted" 
-															th:text="album:${album.artista.nombre}">    </a>
+															th:text="${album.artista.nombre}">    </a>
 														</div>
 														<div class="item-meta text-sm text-muted">
-															<span class="item-meta-stats text-xs"><i
-																class="fa fa-play text-muted"></i> 860 <i
-																class="fa fa-heart m-l-sm text-muted"></i> 240</span>
+															<span class="item-meta-stats text-xs">
+															<!-- REPRODUCCIONES -->
+															<i class="fa fa-play text-muted" ></i> 860
+															<!-- FAVORITOS -->
+															<i class="fa fa-heart m-l-sm text-muted"></i> 240</span>
 														</div>
 													</div>
 												</div>
@@ -272,12 +191,13 @@
 									<div class="tab-pane" id="tab_2">
 										<div class="row m-b">
 										    <!-- CANCION -->
-											<div class="col-xs-4 col-sm-4 col-md-3">
+											<div class="col-xs-4 col-sm-4 col-md-3" th:each="cancion:${canciones}">
 												<div class="item r" data-id="item-3"
 													data-src="http://api.soundcloud.com/tracks/79031167/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
 													<div class="item-media">
 														<a href="track.detail.html" class="item-media-content"
-															style="background-image: url('images/b2.jpg')"></a>
+														th:style="'background-image: url(' + ${cancion.album.rutaimgalbum}   +');'">
+															</a>
 														<div class="item-overlay center">
 															<button class="btn-playpause">Play</button>
 														</div>
@@ -290,16 +210,20 @@
 															<div class="dropdown-menu pull-right black lt"></div>
 														</div>
 														<div class="item-title text-ellipsis">
-															<a href="track.detail.html">I Wanna Be In the Cavalry</a>
+														<!-- NOMBRE CANCION -->
+															<a href="track.detail.html" th:text="${cancion.nombre}"></a>
 														</div>
 														<div class="item-author text-sm text-ellipsis hide">
-															<a href="artist.detail.html" class="text-muted">Jeremy
-																Scott</a>
+														<!-- AUTOR CANCION -->
+															<a href="artist.detail.html" class="text-muted" th:text="${artista.nombre}"></a>
 														</div>
 														<div class="item-meta text-sm text-muted">
-															<span class="item-meta-stats text-xs"><i
-																class="fa fa-play text-muted"></i> 300 <i
-																class="fa fa-heart m-l-sm text-muted"></i> 10</span>
+														
+															<span class="item-meta-stats text-xs">
+															<!-- REPRODUCCIONES -->
+															<i class="fa fa-play text-muted" th:text="${cancion.reproducciones}"></i> 
+															<!-- FAVORITOS -->
+															<i class="fa fa-heart m-l-sm text-muted"></i> 10</span>
 														</div>
 													</div>
 												</div>
@@ -317,7 +241,7 @@
 													data-src="http://api.soundcloud.com/tracks/269944843/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
 													<div class="item-media">
 														<a href="track.detail.html" class="item-media-content"
-															style="background-image: url('images/b0.jpg')"></a>
+															style="background-image: url('../images/b0.jpg')"></a>
 														<div class="item-overlay center">
 															<button class="btn-playpause">Play</button>
 														</div>
@@ -391,7 +315,7 @@
 											data-src="http://api.soundcloud.com/tracks/237514750/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
 											<div class="item-media">
 												<a href="track.detail.html" class="item-media-content"
-													style="background-image: url('images/b9.jpg')"></a>
+													style="background-image: url('../images/b9.jpg')"></a>
 											</div>
 											<div class="item-info">
 												<div class="item-title text-ellipsis">
@@ -442,6 +366,7 @@
 		
 		
 	</div>
-	<script src="scripts/app.min.js"></script>
+	
+	<script src="../scripts/app.min.js"></script>
 </body>
 </html>

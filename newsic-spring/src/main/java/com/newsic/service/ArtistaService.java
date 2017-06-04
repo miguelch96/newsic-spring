@@ -11,6 +11,8 @@ public class ArtistaService implements IArtistaService {
 
 	@Autowired
 	private IArtistaRepository artistaRepository;
+	
+	
 	@Override
 	public Iterable<Artista> findAll() {
 		return artistaRepository.findAll();

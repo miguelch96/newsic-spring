@@ -9,19 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.newsic.entity.Album;
 import com.newsic.service.IAlbumService;
-import com.newsic.service.IArtistaService;
 import com.newsic.service.ICancionService;
 
 @Controller
-@RequestMapping("/album")
+@RequestMapping("/albumes")
 public class AlbumController {
 	
 	@Autowired
 	private IAlbumService albumService;
 	
-	@Autowired
-	private IArtistaService artistaService;
-
 	@Autowired
 	private ICancionService cancionService;
 	
@@ -30,17 +26,15 @@ public class AlbumController {
 		model.addAttribute("albumes", albumService.findAll());
 		model.addAttribute("album",new Album());
 		return "Album";
-			
-	
 	}
 	
-	
 	@GetMapping("/{albumid}")
-	public String findOne(@PathVariable Long artistaid,Model model){
-		model.addAttribute("albumes",albumService.findByArtista(artistaService.findOne(artistaid)));
-		//model.addAttribute("canciones", cancionService.findByArtista(artistaService.findOne(artistaid)));
-		model.addAttribute("artista",artistaService.findOne(artistaid));
-		return "perfilartista";
+	public String findOne(@PathVariable Long albumid,Model model){
+		
+		//EL ARTISTA VIENE DENTRO DEL ALBUM
+		model.addAttribute("album",albumService.findOne(albumid));
+		model.addAttribute("canciones", cancionService.findByAlbum(albumService.findOne(albumid)));
+		return "album";
 	}
 	
 

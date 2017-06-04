@@ -1,7 +1,6 @@
 package com.newsic.service;
 
 import com.newsic.entity.Album;
-import com.newsic.entity.Artista;
 import com.newsic.entity.Cancion;
 import com.newsic.entity.Genero;
 
@@ -18,6 +17,6 @@ public interface ICancionService {
 	public Cancion findByNombre(String name);
 	public Iterable<Cancion> findByNombreContaining(String texto);
 	public Iterable<Cancion> findByGenero(Genero genero);
-	public Iterable<Cancion> findByArtista(Artista artista);
 	public Iterable<Cancion> findByAlbum(Album album);
+	public Iterable<Cancion> findByArtista(Long artistaid);
 }

@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.newsic.entity.Album;
-import com.newsic.entity.Artista;
 import com.newsic.entity.Cancion;
 import com.newsic.entity.Genero;
 import com.newsic.repository.ICancionRepository;
@@ -57,10 +56,9 @@ public class CancionService implements ICancionService {
 	}
 
 	@Override
-	public Iterable<Cancion> findByArtista(Artista artista) {
-		return cancionRepository.findByArtista(artista);
+	public Iterable<Cancion> findByArtista(Long artistaid) {
+		return cancionRepository.findByArtista(artistaid);
 	}
 
-	
 
 }

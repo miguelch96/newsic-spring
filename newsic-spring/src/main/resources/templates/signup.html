@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 <meta charset="utf-8"/>
 <title>Newsic - Registro</title>
-<link rel="apple-touch-icon" href="images/logo.png"/>
-<link rel="shortcut icon" sizes="196x196" href="images/logo.png"/>
-<link rel="stylesheet" href="css/animate.css/animate.min.css"
-	type="text/css"/>
-<link rel="stylesheet" href="css/glyphicons/glyphicons.css"
-	type="text/css"/>
-<link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css"
-	type="text/css"/>
+<link rel="apple-touch-icon" href="../images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
+<link rel="stylesheet" href="../css/animate.css/animate.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="../css/glyphicons/glyphicons.css"
+	type="text/css" />
+<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css"
+	type="text/css" />
 <link rel="stylesheet"
-	href="css/material-design-icons/material-design-icons.css"
-	type="text/css"/>
-<link rel="stylesheet" href="css/bootstrap/dist/css/bootstrap.min.css"
-	type="text/css"/>
-<link rel="stylesheet" href="css/styles/app.min.css"/>
+	href="../css/material-design-icons/material-design-icons.css"
+	type="text/css" />
+<link rel="stylesheet" href="../css/bootstrap/dist/css/bootstrap.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="../css/styles/app.min.css" />
 </head>
 <body>
 	<div class="app dk" id="app">
@@ -33,7 +33,7 @@
 								class="brand-animate" />
 							<path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
 							<circle cx="24" cy="24" r="3" fill="#000000" /></svg> 
-							<img src="images/logo.png" alt="." class="hide"/> <span
+							<img src="../images/logo.png" alt="." class="hide"/> <span
 						class="hidden-folded inline">pulse</span></a>
 				</div>
 			</div>
@@ -49,18 +49,18 @@
 					</div>
 					<div class="m-y text-sm">OR</div>
 					<form name="form"
-						action="http://flatfull.com/themes/pulse/home.html">
+						th:action="@{/usuario/login}">
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Username"
-								required="required"/>
+								/>
 						</div>
 						<div class="form-group">
 							<input type="email" class="form-control" placeholder="Email"
-								required="required"/>
+								/>
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control"
-								placeholder="Password" required="required"/>
+								placeholder="Password" />
 						</div>
 						<div class="m-b-md text-sm">
 							<span class="text-muted">By clicking Sign Up, I agree to
@@ -72,7 +72,7 @@
 					</form>
 					<div class="p-y-lg text-center">
 						<div>
-							Already have an account? <a href="signin.html"
+							Already have an account? <a th:href="@{/usuario/login}"
 								class="text-primary _600">Sign in</a>
 						</div>
 					</div>
@@ -80,7 +80,6 @@
 			</div>
 		</div>
 	</div>
-	<script src="scripts/app.min.js"></script>
+	<script src="../scripts/app.min.js"></script>
 </body>
-<!-- Mirrored from flatfull.com/themes/pulse/signup.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 May 2017 22:07:08 GMT -->
 </html>
