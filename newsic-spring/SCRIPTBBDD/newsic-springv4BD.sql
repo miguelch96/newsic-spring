@@ -61,7 +61,10 @@ CREATE TABLE `artista` (
   `nombreartistico` varchar(50) NOT NULL,
   `rutaimgperfil` varchar(50) DEFAULT NULL,
   `rutaimgportada` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`artistaid`)
+  `usuarioid` int(11) NOT NULL,
+  PRIMARY KEY (`artistaid`),
+  KEY `fk_usuario_artista_idx` (`usuarioid`),
+  CONSTRAINT `fk_usuario_artista` FOREIGN KEY (`usuarioid`) REFERENCES `usuario` (`usuarioid`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -71,7 +74,7 @@ CREATE TABLE `artista` (
 
 LOCK TABLES `artista` WRITE;
 /*!40000 ALTER TABLE `artista` DISABLE KEYS */;
-INSERT INTO `artista` VALUES (2,'Thomas','Hammond','1993-12-27','facilisis,','../images/a6.jpg',NULL),(3,'Igor','Kramer','1993-06-12','pretium aliquet,','../images/a8.jpg',NULL),(4,'Nathaniel','Mccall','1998-08-10','Pellentesque tincidunt','../images/a8.jpg',NULL),(5,'Hayden','Nixon','1986-01-18','arcu','../images/a6.jpg',NULL),(6,'Phillip','Boyer','1991-04-05','Morbi neque','../images/a8.jpg',NULL),(7,'Gavin','Gilliam','1993-01-28','auctor, velit','../images/a7.jpg',NULL),(8,'Nasim','Schwartz','1994-04-12','eu','../images/a8.jpg',NULL),(9,'Oren','Tyler','1999-07-22','Etiam','../images/a6.jpg',NULL),(10,'Jarrod','Cline','1992-07-30','Donec non','../images/a6.jpg',NULL),(11,'Erasmus','Faulkner','1993-06-14','justo. Praesent','../images/a6.jpg',NULL),(12,'Bernard','Austin','1996-05-31','neque. Morbi','../images/a8.jpg',NULL),(13,'Tarik','Barry','1988-05-20','id magna','../images/a6.jpg',NULL),(14,'Robert','Patton','1992-03-06','nunc sed','../images/a7.jpg',NULL);
+INSERT INTO `artista` VALUES (2,'Thomas','Hammond','1993-12-27','facilisis,','../images/a6.jpg',NULL,1),(3,'Igor','Kramer','1993-06-12','pretium aliquet,','../images/a8.jpg',NULL,2),(4,'Nathaniel','Mccall','1998-08-10','Pellentesque tincidunt','../images/a8.jpg',NULL,3),(5,'Hayden','Nixon','1986-01-18','arcu','../images/a6.jpg',NULL,4),(6,'Phillip','Boyer','1991-04-05','Morbi neque','../images/a8.jpg',NULL,5),(7,'Gavin','Gilliam','1993-01-28','auctor, velit','../images/a7.jpg',NULL,6),(8,'Nasim','Schwartz','1994-04-12','eu','../images/a8.jpg',NULL,7),(9,'Oren','Tyler','1999-07-22','Etiam','../images/a6.jpg',NULL,8),(10,'Jarrod','Cline','1992-07-30','Donec non','../images/a6.jpg',NULL,9),(11,'Erasmus','Faulkner','1993-06-14','justo. Praesent','../images/a6.jpg',NULL,10),(12,'Bernard','Austin','1996-05-31','neque. Morbi','../images/a8.jpg',NULL,11),(13,'Tarik','Barry','1988-05-20','id magna','../images/a6.jpg',NULL,12),(14,'Robert','Patton','1992-03-06','nunc sed','../images/a7.jpg',NULL,13);
 /*!40000 ALTER TABLE `artista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,6 +92,7 @@ CREATE TABLE `cancion` (
   `reproducciones` int(11) DEFAULT '0',
   `albumid` int(11) NOT NULL,
   `generoid` int(11) NOT NULL,
+  `rutacancion` varchar(45) DEFAULT '../audio/audiodefault.mp3',
   PRIMARY KEY (`cancionid`),
   KEY `fk_album_cancion_idx` (`albumid`),
   KEY `fk_genero_cancion_idx` (`generoid`),
@@ -103,7 +107,7 @@ CREATE TABLE `cancion` (
 
 LOCK TABLES `cancion` WRITE;
 /*!40000 ALTER TABLE `cancion` DISABLE KEYS */;
-INSERT INTO `cancion` VALUES (5,'Toughjoyfax','01:47',3272,15,8),(6,'Lotstring','01:47',204,17,6),(7,'Konklux','01:47',176,38,8),(8,'Latlux','01:47',3804,8,5),(9,'Wrapsafe','01:47',4500,4,6),(10,'Job','01:47',1189,11,10),(11,'Trippledex','01:47',1217,38,1),(12,'Prodder','01:47',121,23,5),(13,'Cardguard','01:47',905,22,4),(14,'Vagram','01:47',4668,33,3),(15,'Domainer','01:47',1123,35,8),(16,'Lotstring','01:47',3037,15,1),(17,'Temp','01:47',4237,7,2),(18,'Treeflex','01:47',2952,10,4),(19,'Y-Solowarm','01:47',30,38,7),(20,'Latlux','01:47',1798,31,4),(21,'Domainer','01:47',4837,13,10),(22,'Alpha','01:47',4876,43,10),(23,'Otcom','01:47',2008,30,5),(24,'Bigtax','01:47',2122,41,5),(25,'Stim','01:47',105,47,2),(26,'Span','01:47',3110,26,6),(27,'Span','01:47',4859,1,3),(28,'Sonsing','01:47',4431,12,1),(29,'Tresom','01:47',586,19,5),(30,'Holdlamis','01:47',3625,10,7),(31,'Tres-Zap','01:47',4490,35,6),(32,'Bigtax','01:47',3143,38,9),(33,'Y-find','01:47',1571,28,7),(34,'Matsoft','01:47',315,38,6),(35,'Treeflex','01:47',1431,3,6),(36,'Rank','01:47',1449,33,3),(37,'Sonair','01:47',835,24,6),(38,'Sub-Ex','01:47',4829,5,5),(39,'Asoka','01:47',3967,1,6),(40,'Stim','01:47',4467,44,9),(41,'Veribet','01:47',3419,41,6),(42,'Stronghold','01:47',2241,17,9),(43,'Tresom','01:47',1309,15,7),(44,'Andalax','01:47',2449,47,10),(45,'Bytecard','01:47',3058,42,6),(46,'Stronghold','01:47',4812,44,1),(47,'Gembucket','01:47',957,5,4),(48,'Gembucket','01:47',3690,31,6),(49,'Temp','01:47',3305,52,4),(50,'Fixflex','01:47',233,15,2),(51,'Redhold','01:47',758,2,4),(52,'Holdlamis','01:47',4310,10,6),(53,'Pannier','01:47',4375,18,10),(54,'Greenlam','01:47',2561,39,1),(55,'Sonsing','01:47',916,8,4),(56,'Bitwolf','01:47',953,12,7),(57,'Toughjoyfax','01:47',4612,8,1),(58,'Domainer','01:47',1032,30,1),(59,'Voyatouch','01:47',2811,51,3),(60,'Voyatouch','01:47',1694,36,1),(61,'Hatity','01:47',2101,47,4),(62,'Redhold','01:47',3004,8,8),(63,'Tres-Zap','01:47',2119,20,5),(64,'Flexidy','01:47',2824,16,2),(65,'Pannier','01:47',4316,27,6),(66,'Home Ing','01:47',4295,30,3),(67,'Bitchip','01:47',3800,3,10),(68,'Stronghold','01:47',2286,22,5),(69,'Tresom','01:47',375,39,9),(70,'Voyatouch','01:47',2645,29,3),(71,'Tin','01:47',1267,40,3),(72,'Viva','01:47',1607,28,7),(73,'Matsoft','01:47',118,17,1),(74,'Quo Lux','01:47',3097,1,3),(75,'Mat Lam Tam','01:47',4718,38,4),(76,'Keylex','01:47',3140,41,1),(77,'Konklab','01:47',4539,4,3),(78,'Prodder','01:47',4440,3,8),(79,'Cardguard','01:47',557,28,6),(80,'Cookley','01:47',478,29,2),(81,'Quo Lux','01:47',4680,46,2),(82,'Toughjoyfax','01:47',2826,40,5),(83,'Kanlam','01:47',2963,28,1),(84,'Hatity','01:47',2631,33,10),(85,'Bitwolf','01:47',1216,16,6),(86,'Pannier','01:47',2740,48,1),(87,'Cookley','01:47',4824,22,3),(88,'Stim','01:47',3938,7,2),(89,'Voyatouch','01:47',623,5,10),(90,'Mat Lam Tam','01:47',146,36,4),(91,'Regrant','01:47',1009,14,6),(92,'Regrant','01:47',651,45,7),(93,'Bitchip','01:47',1583,51,7),(94,'Sonair','01:47',3027,41,9),(95,'Bamity','01:47',2378,34,2),(96,'Zamit','01:47',1965,37,7),(97,'Voltsillam','01:47',261,43,8),(98,'Tampflex','01:47',1393,2,3),(99,'Ronstring','01:47',480,13,1),(100,'Konklab','01:47',4026,42,9),(101,'Cardguard','01:47',301,24,10),(102,'Zamit','01:47',103,27,8),(103,'Sonsing','01:47',1602,6,7),(104,'Greenlam','01:47',4032,50,3);
+INSERT INTO `cancion` VALUES (5,'Toughjoyfax','01:47',3272,15,8,'../audio/audiodefault.mp3'),(6,'Lotstring','01:47',204,17,6,'../audio/audiodefault.mp3'),(7,'Konklux','01:47',176,38,8,'../audio/audiodefault.mp3'),(8,'Latlux','01:47',3804,8,5,'../audio/audiodefault.mp3'),(9,'Wrapsafe','01:47',4500,4,6,'../audio/audiodefault.mp3'),(10,'Job','01:47',1189,11,10,'../audio/audiodefault.mp3'),(11,'Trippledex','01:47',1217,38,1,'../audio/audiodefault.mp3'),(12,'Prodder','01:47',121,23,5,'../audio/audiodefault.mp3'),(13,'Cardguard','01:47',905,22,4,'../audio/audiodefault.mp3'),(14,'Vagram','01:47',4668,33,3,'../audio/audiodefault.mp3'),(15,'Domainer','01:47',1123,35,8,'../audio/audiodefault.mp3'),(16,'Lotstring','01:47',3037,15,1,'../audio/audiodefault.mp3'),(17,'Temp','01:47',4237,7,2,'../audio/audiodefault.mp3'),(18,'Treeflex','01:47',2952,10,4,'../audio/audiodefault.mp3'),(19,'Y-Solowarm','01:47',30,38,7,'../audio/audiodefault.mp3'),(20,'Latlux','01:47',1798,31,4,'../audio/audiodefault.mp3'),(21,'Domainer','01:47',4837,13,10,'../audio/audiodefault.mp3'),(22,'Alpha','01:47',4876,43,10,'../audio/audiodefault.mp3'),(23,'Otcom','01:47',2008,30,5,'../audio/audiodefault.mp3'),(24,'Bigtax','01:47',2122,41,5,'../audio/audiodefault.mp3'),(25,'Stim','01:47',105,47,2,'../audio/audiodefault.mp3'),(26,'Span','01:47',3110,26,6,'../audio/audiodefault.mp3'),(27,'Span','01:47',4859,1,3,'../audio/audiodefault.mp3'),(28,'Sonsing','01:47',4431,12,1,'../audio/audiodefault.mp3'),(29,'Tresom','01:47',586,19,5,'../audio/audiodefault.mp3'),(30,'Holdlamis','01:47',3625,10,7,'../audio/audiodefault.mp3'),(31,'Tres-Zap','01:47',4490,35,6,'../audio/audiodefault.mp3'),(32,'Bigtax','01:47',3143,38,9,'../audio/audiodefault.mp3'),(33,'Y-find','01:47',1571,28,7,'../audio/audiodefault.mp3'),(34,'Matsoft','01:47',315,38,6,'../audio/audiodefault.mp3'),(35,'Treeflex','01:47',1431,3,6,'../audio/audiodefault.mp3'),(36,'Rank','01:47',1449,33,3,'../audio/audiodefault.mp3'),(37,'Sonair','01:47',835,24,6,'../audio/audiodefault.mp3'),(38,'Sub-Ex','01:47',4829,5,5,'../audio/audiodefault.mp3'),(39,'Asoka','01:47',3967,1,6,'../audio/audiodefault.mp3'),(40,'Stim','01:47',4467,44,9,'../audio/audiodefault.mp3'),(41,'Veribet','01:47',3419,41,6,'../audio/audiodefault.mp3'),(42,'Stronghold','01:47',2241,17,9,'../audio/audiodefault.mp3'),(43,'Tresom','01:47',1309,15,7,'../audio/audiodefault.mp3'),(44,'Andalax','01:47',2449,47,10,'../audio/audiodefault.mp3'),(45,'Bytecard','01:47',3058,42,6,'../audio/audiodefault.mp3'),(46,'Stronghold','01:47',4812,44,1,'../audio/audiodefault.mp3'),(47,'Gembucket','01:47',957,5,4,'../audio/audiodefault.mp3'),(48,'Gembucket','01:47',3690,31,6,'../audio/audiodefault.mp3'),(49,'Temp','01:47',3305,52,4,'../audio/audiodefault.mp3'),(50,'Fixflex','01:47',233,15,2,'../audio/audiodefault.mp3'),(51,'Redhold','01:47',758,2,4,'../audio/audiodefault.mp3'),(52,'Holdlamis','01:47',4310,10,6,'../audio/audiodefault.mp3'),(53,'Pannier','01:47',4375,18,10,'../audio/audiodefault.mp3'),(54,'Greenlam','01:47',2561,39,1,'../audio/audiodefault.mp3'),(55,'Sonsing','01:47',916,8,4,'../audio/audiodefault.mp3'),(56,'Bitwolf','01:47',953,12,7,'../audio/audiodefault.mp3'),(57,'Toughjoyfax','01:47',4612,8,1,'../audio/audiodefault.mp3'),(58,'Domainer','01:47',1032,30,1,'../audio/audiodefault.mp3'),(59,'Voyatouch','01:47',2811,51,3,'../audio/audiodefault.mp3'),(60,'Voyatouch','01:47',1694,36,1,'../audio/audiodefault.mp3'),(61,'Hatity','01:47',2101,47,4,'../audio/audiodefault.mp3'),(62,'Redhold','01:47',3004,8,8,'../audio/audiodefault.mp3'),(63,'Tres-Zap','01:47',2119,20,5,'../audio/audiodefault.mp3'),(64,'Flexidy','01:47',2824,16,2,'../audio/audiodefault.mp3'),(65,'Pannier','01:47',4316,27,6,'../audio/audiodefault.mp3'),(66,'Home Ing','01:47',4295,30,3,'../audio/audiodefault.mp3'),(67,'Bitchip','01:47',3800,3,10,'../audio/audiodefault.mp3'),(68,'Stronghold','01:47',2286,22,5,'../audio/audiodefault.mp3'),(69,'Tresom','01:47',375,39,9,'../audio/audiodefault.mp3'),(70,'Voyatouch','01:47',2645,29,3,'../audio/audiodefault.mp3'),(71,'Tin','01:47',1267,40,3,'../audio/audiodefault.mp3'),(72,'Viva','01:47',1607,28,7,'../audio/audiodefault.mp3'),(73,'Matsoft','01:47',118,17,1,'../audio/audiodefault.mp3'),(74,'Quo Lux','01:47',3097,1,3,'../audio/audiodefault.mp3'),(75,'Mat Lam Tam','01:47',4718,38,4,'../audio/audiodefault.mp3'),(76,'Keylex','01:47',3140,41,1,'../audio/audiodefault.mp3'),(77,'Konklab','01:47',4539,4,3,'../audio/audiodefault.mp3'),(78,'Prodder','01:47',4440,3,8,'../audio/audiodefault.mp3'),(79,'Cardguard','01:47',557,28,6,'../audio/audiodefault.mp3'),(80,'Cookley','01:47',478,29,2,'../audio/audiodefault.mp3'),(81,'Quo Lux','01:47',4680,46,2,'../audio/audiodefault.mp3'),(82,'Toughjoyfax','01:47',2826,40,5,'../audio/audiodefault.mp3'),(83,'Kanlam','01:47',2963,28,1,'../audio/audiodefault.mp3'),(84,'Hatity','01:47',2631,33,10,'../audio/audiodefault.mp3'),(85,'Bitwolf','01:47',1216,16,6,'../audio/audiodefault.mp3'),(86,'Pannier','01:47',2740,48,1,'../audio/audiodefault.mp3'),(87,'Cookley','01:47',4824,22,3,'../audio/audiodefault.mp3'),(88,'Stim','01:47',3938,7,2,'../audio/audiodefault.mp3'),(89,'Voyatouch','01:47',623,5,10,'../audio/audiodefault.mp3'),(90,'Mat Lam Tam','01:47',146,36,4,'../audio/audiodefault.mp3'),(91,'Regrant','01:47',1009,14,6,'../audio/audiodefault.mp3'),(92,'Regrant','01:47',651,45,7,'../audio/audiodefault.mp3'),(93,'Bitchip','01:47',1583,51,7,'../audio/audiodefault.mp3'),(94,'Sonair','01:47',3027,41,9,'../audio/audiodefault.mp3'),(95,'Bamity','01:47',2378,34,2,'../audio/audiodefault.mp3'),(96,'Zamit','01:47',1965,37,7,'../audio/audiodefault.mp3'),(97,'Voltsillam','01:47',261,43,8,'../audio/audiodefault.mp3'),(98,'Tampflex','01:47',1393,2,3,'../audio/audiodefault.mp3'),(99,'Ronstring','01:47',480,13,1,'../audio/audiodefault.mp3'),(100,'Konklab','01:47',4026,42,9,'../audio/audiodefault.mp3'),(101,'Cardguard','01:47',301,24,10,'../audio/audiodefault.mp3'),(102,'Zamit','01:47',103,27,8,'../audio/audiodefault.mp3'),(103,'Sonsing','01:47',1602,6,7,'../audio/audiodefault.mp3'),(104,'Greenlam','01:47',4032,50,3,'../audio/audiodefault.mp3');
 /*!40000 ALTER TABLE `cancion` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,13 +225,13 @@ DROP TABLE IF EXISTS `seguidor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `seguidor` (
-  `usuarioid` int(11) NOT NULL,
+  `seguidorid` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(45) NOT NULL,
   `apellido` varchar(45) NOT NULL,
   `fechanacimiento` varchar(45) NOT NULL,
-  `imgperfil` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`usuarioid`),
-  CONSTRAINT `fk_usuario_seguidor` FOREIGN KEY (`usuarioid`) REFERENCES `usuario` (`usuarioid`) ON DELETE CASCADE ON UPDATE CASCADE
+  `rutaimgperfil` varchar(45) DEFAULT NULL,
+  `usuarioid` int(11) DEFAULT NULL,
+  PRIMARY KEY (`seguidorid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -260,6 +264,7 @@ CREATE TABLE `tipo_usuario` (
 
 LOCK TABLES `tipo_usuario` WRITE;
 /*!40000 ALTER TABLE `tipo_usuario` DISABLE KEYS */;
+INSERT INTO `tipo_usuario` VALUES (1,'Artista'),(2,'Seguidor');
 /*!40000 ALTER TABLE `tipo_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -278,7 +283,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`usuarioid`),
   KEY `fk_tipo_usuario_idx` (`tipousuarioid`),
   CONSTRAINT `fk_tipo_usuario` FOREIGN KEY (`tipousuarioid`) REFERENCES `tipo_usuario` (`tipousuarioid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -287,6 +292,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'thomas@hammond','12345',1),(2,'igor@krammer','12345',1),(3,'nathaniel@mckal','12345',1),(4,'hayden@nixon','12345',1),(5,'phillip@boyer','12345',1),(6,'gavin@gilliam','12345',1),(7,'nasim@schawrtz','12345',1),(8,'oren@tailer','12345',1),(9,'jarrod@cline','12345',1),(10,'erasmus@foulkner','12345',1),(11,'bernard@austin','12345',1),(12,'tarik@barry','12345',1),(13,'robert@patton','12345',1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -299,4 +305,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-05 16:07:46
+-- Dump completed on 2017-06-07 13:20:32

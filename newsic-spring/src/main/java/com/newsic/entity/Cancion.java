@@ -28,6 +28,8 @@ public class Cancion {
 	
 	private int reproducciones;
 	
+	private String rutacancion;
+	
 	@ManyToOne
 	@JoinColumn(name="albumid")
 	private Album album;
@@ -101,6 +103,18 @@ public class Cancion {
 	public void setGenero(Genero genero) {
 		this.genero = genero;
 	}
+
+
+	public String getRutacancion() {
+		return rutacancion;
+	}
+
+
+	public void setRutacancion(String rutacancion) {
+		this.rutacancion = rutacancion;
+	}
+	
+	
 
 
 	

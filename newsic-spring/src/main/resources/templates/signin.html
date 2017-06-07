@@ -34,7 +34,7 @@
 							<path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
 							<circle cx="24" cy="24" r="3" fill="#000000" /></svg> 
 							<img src="../images/logo.png" alt="." class="hide"/> <span
-						class="hidden-folded inline">pulse</span></a>
+						class="hidden-folded inline">newsic</span></a>
 				</div>
 			</div>
 		</div>
@@ -48,31 +48,45 @@
 							class="fa fa-google-plus pull-left"></i> Sign in with Google+</a>
 					</div>
 					<div class="m-y text-sm">OR</div>
-					<form name="form" th:action="@{/artistas}">
-						
 					
+					
+					
+					<form name="form"  th:action="@{/artistas}">
+						
 						<div class="form-group">
 							<input type="email" class="form-control" placeholder="Email"/>
-								<!-- agregar required="required" a cada input -->
+			
 						</div>
 						<div class="form-group">
 							<input type="password" class="form-control"
-								placeholder="password" />
+								placeholder="password" />		
 						</div>
+						
+						
 						<div class="m-b-md">
 							<label class="md-check"><input type="checkbox"/><i
 								class="primary"></i> Keep me signed in</label>
 						</div>
+						
+						
 						<button type="submit" class="btn btn-lg black p-x-lg">Sign
 							in</button>
+							
 					</form>
 					<div class="m-y">
 						<a href="forgot-password.html" class="_600">Forgot password?</a>
 					</div>
 					<div>
-						Do not have an account? <a th:href="@{/usuario/registro}"
+						Do not have an account? <a th:href="@{/artistas/registro}"
 							class="text-primary _600">Sign up</a>
 					</div>
+					
+					<form class="form-inline" method="POST" th:action="@{/artistas/registro}" 
+                     style="margion:20px 0">
+                    <div class="form-group">
+                     <button type="submit" class="btn btn-primary">Registrar artista</button>
+                    </div>
+          </form>
 				</div>
 			</div>
 		</div>

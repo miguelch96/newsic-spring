@@ -20,6 +20,7 @@ public class ArtistaService implements IArtistaService {
 
 	@Override
 	public void save(Artista artista) {
+		artista.setRutaimgperfil("../images/imgperfildefault.png");
 		artistaRepository.save(artista);
 	}
 

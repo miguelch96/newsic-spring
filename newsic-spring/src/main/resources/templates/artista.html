@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 <meta charset="utf-8"/>
-<title th:text="${artista.nombreartistico}"></title>
+<title th:text="${artista.nombre + ' ' + artista.apellido}"></title>
 <link rel="apple-touch-icon" href="../images/logo.png" />
 <link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
 <link rel="stylesheet" href="../css/animate.css/animate.min.css"
@@ -108,7 +108,7 @@
 											<!-- CANCION POPULAR -->
 											<div class="col-md-12 col-lg-6">
 												<div class="item r" data-id="item-3"
-													data-src="http://api.soundcloud.com/tracks/79031167/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
 														<a href="track.detail.html" class="item-media-content"
 															style="background-image: url('../images/b2.jpg')"></a>
@@ -147,7 +147,7 @@
 										   <!-- ALBUM -->
 											<div class="col-xs-4 col-sm-4 col-md-3" th:each="album:${albumes}">
 												<div class="item r" data-id="item-10"
-													data-src="http://api.soundcloud.com/tracks/237514750/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
 														<a th:href="${'/albumes/' + album.albumid}" class="item-media-content"
 				
@@ -193,7 +193,7 @@
 										    <!-- CANCION -->
 											<div class="col-xs-4 col-sm-4 col-md-3" th:each="cancion:${canciones}">
 												<div class="item r" data-id="item-3"
-													data-src="http://api.soundcloud.com/tracks/79031167/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
 														<a href="track.detail.html" class="item-media-content"
 														th:style="'background-image: url(' + ${cancion.album.rutaimgalbum}   +');'">
@@ -238,7 +238,7 @@
 										<div class="row m-b">
 											<div class="col-xs-4 col-sm-4 col-md-3">
 												<div class="item r" data-id="item-1"
-													data-src="http://api.soundcloud.com/tracks/269944843/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
 														<a href="track.detail.html" class="item-media-content"
 															style="background-image: url('../images/b0.jpg')"></a>
@@ -312,7 +312,7 @@
 								<div class="row item-list item-list-sm m-b">
 									<div class="col-xs-12">
 										<div class="item r" data-id="item-10"
-											data-src="http://api.soundcloud.com/tracks/237514750/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+											data-src="../audio/audiodefault.mp3">
 											<div class="item-media">
 												<a href="track.detail.html" class="item-media-content"
 													style="background-image: url('../images/b9.jpg')"></a>
