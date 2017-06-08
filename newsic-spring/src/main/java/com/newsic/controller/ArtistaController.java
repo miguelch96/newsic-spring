@@ -65,7 +65,7 @@ public class ArtistaController {
 			return "signup";
 		}
 		this.artistaService.save(artista);
-		return "redirect:/artistas/login";
+		return "signin";
 	}
 
 	@PostMapping("/login")
