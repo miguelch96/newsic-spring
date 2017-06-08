@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <title th:text="${artista.nombre + ' ' + artista.apellido}"></title>
 <link rel="apple-touch-icon" href="../images/logo.png" />
 <link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
@@ -9,13 +9,13 @@
 	type="text/css" />
 <link rel="stylesheet" href="../css/glyphicons/glyphicons.css"
 	type="text/css" />
-<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css"
-	type="text/css" />
+<link rel="stylesheet"
+	href="../css/font-awesome/css/font-awesome.min.css" type="text/css" />
 <link rel="stylesheet"
 	href="../css/material-design-icons/material-design-icons.css"
 	type="text/css" />
-<link rel="stylesheet" href="../css/bootstrap/dist/css/bootstrap.min.css"
-	type="text/css" />
+<link rel="stylesheet"
+	href="../css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="../css/styles/app.min.css" />
 
 
@@ -25,11 +25,11 @@
 
 		<!-- PANEL IZQUIERDO -->
 		<div th:replace="fragment/panelizquierdo"></div>
-		
-        <!-- CONTENIDO -->
+
+		<!-- CONTENIDO -->
 		<div id="content" class="app-content white bg box-shadow-z2"
 			role="main">
-		
+
 			<div class="app-footer app-player grey bg">
 				<div class="playlist" style="width: 100%"></div>
 			</div>
@@ -51,9 +51,10 @@
 							</div>
 							<div class="col-sm">
 								<div class="p-l-md no-padding-xs">
-								<!-- TITULO  -->
+									<!-- TITULO  -->
 									<div class="page-title">
-										<h1 class="inline" th:text="${artista.nombre + ' '+ artista.apellido}"></h1>
+										<h1 class="inline"
+											th:text="${artista.nombre + ' '+ artista.apellido}"></h1>
 										<label class="fa fa-star text-primary text-lg m-b v-m m-l-xs"
 											title="Pro"></label>
 									</div>
@@ -84,7 +85,7 @@
 							<div class="padding">
 								<div class="nav-active-border b-primary bottom m-b-md">
 									<ul class="nav l-h-2x">
-									<!-- CONFIGURACION TABS -->
+										<!-- CONFIGURACION TABS -->
 										<li class="nav-item m-r inline"><a
 											class="nav-link active" href="#" data-toggle="tab"
 											data-target="#tab_1">Overview</a></li>
@@ -97,11 +98,11 @@
 									</ul>
 								</div>
 								<div class="tab-content">
-								
-								<!-- OVERVIEW-  LOS MAS POPULAR -->
+
+									<!-- OVERVIEW-  LOS MAS POPULAR -->
 									<div class="tab-pane active" id="tab_1">
-									
-									<!-- TAP POPULAR - CANCIONES POPULARES -->
+
+										<!-- TAP POPULAR - CANCIONES POPULARES -->
 										<h5 class="m-b">Popular</h5>
 										<div class="row item-list item-list-md item-list-li m-b"
 											id="tracks">
@@ -137,20 +138,21 @@
 														</div>
 													</div>
 												</div>
-											</div>																																				
+											</div>
 										</div>
-										
+
 										<!--TAP POPULAR- ALBUMES POPULARES -->
 										<h5 class="m-b">Albums</h5>
 										<!-- LISTA ALBUMES POPULARES -->
-										<div class="row m-b" >
-										   <!-- ALBUM -->
-											<div class="col-xs-4 col-sm-4 col-md-3" th:each="album:${albumes}">
+										<div class="row m-b">
+											<!-- ALBUM -->
+											<div class="col-xs-4 col-sm-4 col-md-3"
+												th:each="album:${albumes}">
 												<div class="item r" data-id="item-10"
 													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
-														<a th:href="${'/albumes/' + album.albumid}" class="item-media-content"
-				
+														<a th:href="${'/albumes/' + album.albumid}"
+															class="item-media-content"
 															th:style="'background-image: url(' + ${album.rutaimgalbum}   +');'"></a>
 														<div class="item-overlay center">
 															<button class="btn-playpause">Play</button>
@@ -166,38 +168,38 @@
 														<div class="item-title text-ellipsis">
 															<a href="track.detail.html" th:text="${album.nombre}"></a>
 														</div>
-														
+
 														<div class="item-author text-sm text-ellipsis hide">
-															<a href="artist.detail.html" class="text-muted" 
-															th:text="${album.artista.nombre}">    </a>
+															<a href="artist.detail.html" class="text-muted"
+																th:text="${album.artista.nombre}"> </a>
 														</div>
 														<div class="item-meta text-sm text-muted">
-															<span class="item-meta-stats text-xs">
-															<!-- REPRODUCCIONES -->
-															<i class="fa fa-play text-muted" ></i> 860
-															<!-- FAVORITOS -->
-															<i class="fa fa-heart m-l-sm text-muted"></i> 240</span>
+															<span class="item-meta-stats text-xs"> <!-- REPRODUCCIONES -->
+																<i class="fa fa-play text-muted"></i> 860 <!-- FAVORITOS -->
+																<i class="fa fa-heart m-l-sm text-muted"></i> 240
+															</span>
 														</div>
 													</div>
 												</div>
 											</div>
-											
-										
+
+
 										</div>
 										<a href="#" class="btn btn-sm white rounded">Show More</a>
 									</div>
-									
+
 									<!-- TAB CANCIONES -->
 									<div class="tab-pane" id="tab_2">
 										<div class="row m-b">
-										    <!-- CANCION -->
-											<div class="col-xs-4 col-sm-4 col-md-3" th:each="cancion:${canciones}">
+											<!-- CANCION -->
+											<div class="col-xs-4 col-sm-4 col-md-3"
+												th:each="cancion:${canciones}">
 												<div class="item r" data-id="item-3"
 													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
 														<a href="track.detail.html" class="item-media-content"
-														th:style="'background-image: url(' + ${cancion.album.rutaimgalbum}   +');'">
-															</a>
+															th:style="'background-image: url(' + ${cancion.album.rutaimgalbum}   +');'">
+														</a>
 														<div class="item-overlay center">
 															<button class="btn-playpause">Play</button>
 														</div>
@@ -210,29 +212,30 @@
 															<div class="dropdown-menu pull-right black lt"></div>
 														</div>
 														<div class="item-title text-ellipsis">
-														<!-- NOMBRE CANCION -->
+															<!-- NOMBRE CANCION -->
 															<a href="track.detail.html" th:text="${cancion.nombre}"></a>
 														</div>
 														<div class="item-author text-sm text-ellipsis hide">
-														<!-- AUTOR CANCION -->
-															<a href="artist.detail.html" class="text-muted" th:text="${artista.nombre}"></a>
+															<!-- AUTOR CANCION -->
+															<a href="artist.detail.html" class="text-muted"
+																th:text="${artista.nombre}"></a>
 														</div>
 														<div class="item-meta text-sm text-muted">
-														
-															<span class="item-meta-stats text-xs">
-															<!-- REPRODUCCIONES -->
-															<i class="fa fa-play text-muted" th:text="${cancion.reproducciones}"></i> 
-															<!-- FAVORITOS -->
-															<i class="fa fa-heart m-l-sm text-muted"></i> 10</span>
+
+															<span class="item-meta-stats text-xs"> <!-- REPRODUCCIONES -->
+																<i class="fa fa-play text-muted"
+																th:text="${cancion.reproducciones}"></i> <!-- FAVORITOS -->
+																<i class="fa fa-heart m-l-sm text-muted"></i> 10
+															</span>
 														</div>
 													</div>
 												</div>
 											</div>
-																																		
+
 										</div>
 										<a href="#" class="btn btn-sm white rounded">Show More</a>
 									</div>
-									
+
 									<!-- TAB PLAYLIST -->
 									<div class="tab-pane" id="tab_3">
 										<div class="row m-b">
@@ -266,10 +269,10 @@
 														</div>
 													</div>
 												</div>
-											</div>										
+											</div>
 										</div>
 									</div>
-									
+
 									<!-- TAB PROFILE - ACA METER REDES SOCIALES -->
 									<div class="tab-pane" id="tab_4">
 										<div class="row-col m-b">
@@ -301,13 +304,13 @@
 								</div>
 							</div>
 						</div>
-						
+
 						<!-- PANEL DERECHO -->
 						<div class="col-lg-3 w-xxl w-auto-md">
 							<div class="padding" style="bottom: 60px"
 								data-ui-jp="stick_in_parent">
 								<h6 class="text text-muted">5 Likes</h6>
-								
+
 								<!-- PANEL DERECHO LIKES-->
 								<div class="row item-list item-list-sm m-b">
 									<div class="col-xs-12">
@@ -327,10 +330,10 @@
 											</div>
 										</div>
 									</div>
-									
-																
+
+
 								</div>
-								
+
 								<!-- PANEL DERECHO GO MOBILE-->
 								<h6 class="text text-muted">Go mobile</h6>
 								<div class="btn-groups">
@@ -346,7 +349,7 @@
 											class="text-muted text-xxs">Get it on</span> <b
 											class="block m-b-xs m-r-xs">Google Play</b></span></a>
 								</div>
-								
+
 								<!-- PANEL DERECHO  ABOL CONTACT LEGAL POLICY-->
 								<div class="b-b m-y"></div>
 								<div class="nav text-sm _600">
@@ -362,11 +365,11 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		
+
+
+
 	</div>
-	
+
 	<script src="../scripts/app.min.js"></script>
 </body>
 </html>

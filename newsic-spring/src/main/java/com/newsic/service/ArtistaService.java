@@ -39,4 +39,9 @@ public class ArtistaService implements IArtistaService {
 		return artistaRepository.findByNombreartisticoContaining(texto);
 	}
 
+	@Override
+	public Artista findByEmail(String email) {
+		return artistaRepository.findByEmail(email);
+	}
+
 }

@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
 <meta charset="utf-8" />
-<title>lista artistas</title>
+<title>Lista de artistas</title>
 <link rel="apple-touch-icon" href="../images/logo.png" />
 <link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
 <link rel="stylesheet" href="../css/animate.css/animate.min.css"
@@ -16,8 +16,8 @@
 	href="../css/material-design-icons/material-design-icons.css"
 	type="text/css" />
 <link rel="stylesheet" href="../css/styles/app.min.css" />
-<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet" />
+<link rel="stylesheet"
+	href="../css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
 
 </head>
 <body>
@@ -89,11 +89,11 @@
 						<div class="col-lg-3 w-xxl w-auto-md">
 							<div class="padding" style="bottom: 60px"
 								data-ui-jp="stick_in_parent">
-								<h6 class="text text-muted">5 Likes</h6>
+								<h6 class="text text-muted">Top 5 Artistas del Genero</h6>
 								<div class="row item-list item-list-sm m-b">
 									<div class="col-xs-12">
 										<div class="item r" data-id="item-11"
-											data-src="http://api.soundcloud.com/tracks/218060449/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+											data-src="../audio/audiodefault.mp3">
 											<div class="item-media">
 												<a href="track.detail.html" class="item-media-content"
 													style="background-image: url('../images/b10.jpg')"></a>

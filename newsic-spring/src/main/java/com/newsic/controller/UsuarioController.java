@@ -14,7 +14,7 @@ public class UsuarioController {
 	public String login(Model model){
 		//model.addAttribute("artistas", artistaService.findAll());
 		//model.addAttribute("artista",new Artista());
-		return "signin";
+		return "login";
 	}
 	
 	

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <title>Newsic Login</title>
 <link rel="apple-touch-icon" href="../images/logo.png" />
 <link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
@@ -9,13 +9,13 @@
 	type="text/css" />
 <link rel="stylesheet" href="../css/glyphicons/glyphicons.css"
 	type="text/css" />
-<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css"
-	type="text/css" />
+<link rel="stylesheet"
+	href="../css/font-awesome/css/font-awesome.min.css" type="text/css" />
 <link rel="stylesheet"
 	href="../css/material-design-icons/material-design-icons.css"
 	type="text/css" />
-<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet" />
+<link rel="stylesheet"
+	href="../css/bootstrap/dist/css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="../css/styles/app.min.css" />
 </head>
 <body>
@@ -32,8 +32,8 @@
 							<circle cx="13" cy="13" r="2" fill="#ffffff"
 								class="brand-animate" />
 							<path d="M 14 24 L 24 24 L 14 44 Z" fill="#FFFFFF" />
-							<circle cx="24" cy="24" r="3" fill="#000000" /></svg> 
-							<img src="../images/logo.png" alt="." class="hide"/> <span
+							<circle cx="24" cy="24" r="3" fill="#000000" /></svg> <img
+						src="../images/logo.png" alt="." class="hide" /> <span
 						class="hidden-folded inline">newsic</span></a>
 				</div>
 			</div>
@@ -48,45 +48,54 @@
 							class="fa fa-google-plus pull-left"></i> Sign in with Google+</a>
 					</div>
 					<div class="m-y text-sm">OR</div>
-					
-					
-					
-					<form name="form"  th:action="@{/artistas}">
-						
+
+
+
+					<form name="form" method="POST"
+						th:action="@{/artistas/loginusuario}">
+
 						<div class="form-group">
-							<input type="email" class="form-control" placeholder="Email"/>
-			
+							<input type="email" class="form-control" name="email"
+								placeholder="Email" required="required"/>
+
 						</div>
 						<div class="form-group">
-							<input type="password" class="form-control"
-								placeholder="password" />		
+							<input type="password" class="form-control" name="passwd"
+								placeholder="Password" required="required"/>
 						</div>
-						
-						
+
+
+						 
 						<div class="m-b-md">
-							<label class="md-check"><input type="checkbox"/><i
+							<label class="md-check"><input type="checkbox" /><i
 								class="primary"></i> Keep me signed in</label>
 						</div>
-						
-						
+
+
 						<button type="submit" class="btn btn-lg black p-x-lg">Sign
 							in</button>
-							
+
 					</form>
+					<br/>
+					<span th:text="${message != null} ? ${message} : 'null value!'"></span>
+					<br/>
 					<div class="m-y">
-						<a href="forgot-password.html" class="_600">Forgot password?</a>
+						<a href="#" class="_600">Forgot password?</a>
 					</div>
+					
+					<!-- 
 					<div>
 						Do not have an account? <a th:href="@{/artistas/registro}"
 							class="text-primary _600">Sign up</a>
-					</div>
+					</div> -->
 					
-					<form class="form-inline" method="POST" th:action="@{/artistas/registro}" 
-                     style="margion:20px 0">
-                    <div class="form-group">
-                     <button type="submit" class="btn btn-primary">Registrar artista</button>
-                    </div>
-          </form>
+					<form class="form-inline" method="POST"
+						th:action="@{/artistas/registro}" style="margion: 20px 0">
+						Do not have an account?
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary">Sign up</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>

@@ -11,4 +11,6 @@ public interface IArtistaRepository extends CrudRepository<Artista, Long> {
 	
 	Artista findByNombreartistico(String name);
 	Iterable<Artista> findByNombreartisticoContaining(String texto);
+	Artista findByEmail(String email);
+	
 }

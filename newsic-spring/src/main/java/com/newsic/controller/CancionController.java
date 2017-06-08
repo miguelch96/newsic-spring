@@ -21,8 +21,7 @@ public class CancionController {
 	@Autowired
 	private ICancionService cancionService;
 	
-	@Autowired
-	private IArtistaService artistaService;
+
 	
 	@GetMapping("/canciones")
 	public String findAll(Model model){
@@ -32,7 +31,7 @@ public class CancionController {
 	}
 	
 	
-	@PostMapping
+	@PostMapping("/newcancion")
 	public String save(@Valid Cancion cancion, BindingResult result,Model model){
 			if(result.hasErrors()){				
 				model.addAttribute("message", result.toString());
