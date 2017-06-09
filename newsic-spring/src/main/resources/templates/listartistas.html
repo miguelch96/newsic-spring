@@ -15,16 +15,11 @@
 <link rel="stylesheet"
 	href="../css/material-design-icons/material-design-icons.css"
 	type="text/css" />
-<link rel="stylesheet" href="../css/styles/app.min.css" />
-<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet" />
-<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
-	rel="stylesheet" />
-
+<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="../css/styles/app.min.css" type="text/css" />
 </head>
 <body>
 	<div class="app dk" id="app">
-
 
 		<!-- PANEL IZQUIERDO -->
 		<div th:replace="fragment/panelizquierdo"></div>
@@ -42,9 +37,10 @@
 								<div class="page-title m-b">
 									<h1 class="inline m-a-0">Artistas</h1>
 									<div class="dropdown inline">
-										<button class="btn btn-sm no-bg h4 m-y-0 v-b dropdown-toggle text-primary"
+										<button
+											class="btn btn-sm no-bg h4 m-y-0 v-b dropdown-toggle text-primary"
 											data-toggle="dropdown">By name</button>
-										<div class="dropdown-menu" >
+										<div class="dropdown-menu">
 											<a href="#" class="dropdown-item active">By name</a> <a
 												href="#" class="dropdown-item">Songs</a>
 										</div>
@@ -66,13 +62,12 @@
 													<!-- LINK AL ARTISTA -->
 													<a th:href="${'/artistas/' + artista.artistaid}"
 														class="item-media-content"
-														th:style="'background-image: url(' + ${artista.rutaimgperfil}   +');'"
-														></a>
+														th:style="'background-image: url(' + ${artista.rutaimgperfil}   +');'"></a>
 
 												</div>
 												<div class="item-info text-center">
 													<div class="item-title text-ellipsis">
-														<a href="artist.detail.html"
+														<a href="#"
 															th:text="${artista.nombre + ' '+ artista.apellido}"></a>
 														<div class="text-sm text-muted">23 songs</div>
 													</div>
@@ -81,8 +76,8 @@
 										</div>
 									</div>
 
-									<a href="scroll.author.html"
-										class="btn btn-sm white rounded jscroll-next">Show More</a>
+									<a href="#" class="btn btn-sm white rounded jscroll-next">Show
+										More</a>
 								</div>
 							</div>
 						</div>
@@ -97,16 +92,15 @@
 										<div class="item r" data-id="item-11"
 											data-src="../audio/audiodefault.mp3">
 											<div class="item-media">
-												<a href="track.detail.html" class="item-media-content"
+												<a href="#" class="item-media-content"
 													style="background-image: url('../images/b10.jpg')"></a>
 											</div>
 											<div class="item-info">
 												<div class="item-title text-ellipsis">
-													<a href="track.detail.html">Spring</a>
+													<a href="#">Spring</a>
 												</div>
 												<div class="item-author text-sm text-ellipsis">
-													<a href="artist.detail.html" class="text-muted">Pablo
-														Nouvelle</a>
+													<a href="#" class="text-muted">Pablo Nouvelle</a>
 												</div>
 											</div>
 										</div>

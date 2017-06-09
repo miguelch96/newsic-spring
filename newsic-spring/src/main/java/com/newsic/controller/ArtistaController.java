@@ -91,7 +91,7 @@ public class ArtistaController {
 				{
 					model.addAttribute("artistas", artistaService.findAll());
 					model.addAttribute("generos", generoService.findAll());
-					model.addAttribute("usuario", artista);
+					//model.addAttribute("usuario", artista);
 					return "redirect:/artistas";
 					
 				}

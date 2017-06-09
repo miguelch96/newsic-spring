@@ -3,23 +3,20 @@
 <head>
 <meta charset="utf-8" />
 <title th:text="${artista.nombre + ' ' + artista.apellido}"></title>
-<link rel="apple-touch-icon" href="../images/logo.png" />
-<link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
+<link rel="apple-touch-icon" href="../images/logo.png"/>
+<link rel="shortcut icon" sizes="196x196" href="../images/logo.png"/>
 <link rel="stylesheet" href="../css/animate.css/animate.min.css"
-	type="text/css" />
+	type="text/css"/>
 <link rel="stylesheet" href="../css/glyphicons/glyphicons.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="../css/font-awesome/css/font-awesome.min.css" type="text/css" />
+	type="text/css"/>
+<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css"
+	type="text/css"/>
 <link rel="stylesheet"
 	href="../css/material-design-icons/material-design-icons.css"
-	type="text/css" />
-<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
-	rel="stylesheet" />
-<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
-	rel="stylesheet" />
-<link rel="stylesheet" href="../css/styles/app.min.css" />
-
+	type="text/css"/>
+<link rel="stylesheet" href="../css/bootstrap.min.css"
+	type="text/css"/>
+<link rel="stylesheet" href="../css/styles/app.min.css"  type="text/css"/>
 
 </head>
 <body>
@@ -113,7 +110,7 @@
 												<div class="item r" data-id="item-3"
 													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
-														<a href="track.detail.html" class="item-media-content"
+														<a href="#" class="item-media-content"
 															style="background-image: url('../images/b2.jpg')"></a>
 														<div class="item-overlay center">
 															<button class="btn-playpause">Play</button>
@@ -127,10 +124,10 @@
 															<div class="dropdown-menu pull-right black lt"></div>
 														</div>
 														<div class="item-title text-ellipsis">
-															<a href="track.detail.html">I Wanna Be In the Cavalry</a>
+															<a href="#">I Wanna Be In the Cavalry</a>
 														</div>
 														<div class="item-author text-sm text-ellipsis hide">
-															<a href="artist.detail.html" class="text-muted">Jeremy
+															<a href="#" class="text-muted">Jeremy
 																Scott</a>
 														</div>
 														<div class="item-meta text-sm text-muted">
@@ -168,11 +165,11 @@
 															<div class="dropdown-menu pull-right black lt"></div>
 														</div>
 														<div class="item-title text-ellipsis">
-															<a href="track.detail.html" th:text="${album.nombre}"></a>
+															<a href="#" th:text="${album.nombre}"></a>
 														</div>
 
 														<div class="item-author text-sm text-ellipsis hide">
-															<a href="artist.detail.html" class="text-muted"
+															<a href="#" class="text-muted"
 																th:text="${album.artista.nombre}"> </a>
 														</div>
 														<div class="item-meta text-sm text-muted">
@@ -199,7 +196,7 @@
 												<div class="item r" data-id="item-3"
 													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
-														<a href="track.detail.html" class="item-media-content"
+														<a href="#" class="item-media-content"
 															th:style="'background-image: url(' + ${cancion.album.rutaimgalbum}   +');'">
 														</a>
 														<div class="item-overlay center">
@@ -215,11 +212,11 @@
 														</div>
 														<div class="item-title text-ellipsis">
 															<!-- NOMBRE CANCION -->
-															<a href="track.detail.html" th:text="${cancion.nombre}"></a>
+															<a href="#" th:text="${cancion.nombre}"></a>
 														</div>
 														<div class="item-author text-sm text-ellipsis hide">
 															<!-- AUTOR CANCION -->
-															<a href="artist.detail.html" class="text-muted"
+															<a href="#" class="text-muted"
 																th:text="${artista.nombre}"></a>
 														</div>
 														<div class="item-meta text-sm text-muted">
@@ -245,7 +242,7 @@
 												<div class="item r" data-id="item-1"
 													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
-														<a href="track.detail.html" class="item-media-content"
+														<a href="#" class="item-media-content"
 															style="background-image: url('../images/b0.jpg')"></a>
 														<div class="item-overlay center">
 															<button class="btn-playpause">Play</button>
@@ -259,10 +256,10 @@
 															<div class="dropdown-menu pull-right black lt"></div>
 														</div>
 														<div class="item-title text-ellipsis">
-															<a href="track.detail.html">Pull Up</a>
+															<a href="#">Pull Up</a>
 														</div>
 														<div class="item-author text-sm text-ellipsis hide">
-															<a href="artist.detail.html" class="text-muted">Summerella</a>
+															<a href="#" class="text-muted">Summerella</a>
 														</div>
 														<div class="item-meta text-sm text-muted">
 															<span class="item-meta-stats text-xs"><i
@@ -319,15 +316,15 @@
 										<div class="item r" data-id="item-10"
 											data-src="../audio/audiodefault.mp3">
 											<div class="item-media">
-												<a href="track.detail.html" class="item-media-content"
+												<a href="#" class="item-media-content"
 													style="background-image: url('../images/b9.jpg')"></a>
 											</div>
 											<div class="item-info">
 												<div class="item-title text-ellipsis">
-													<a href="track.detail.html">The Open Road</a>
+													<a href="#">The Open Road</a>
 												</div>
 												<div class="item-author text-sm text-ellipsis">
-													<a href="artist.detail.html" class="text-muted">Postiljonen</a>
+													<a href="#" class="text-muted">Postiljonen</a>
 												</div>
 											</div>
 										</div>

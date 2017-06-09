@@ -59,13 +59,12 @@ CREATE TABLE `artista` (
   `apellido` varchar(50) NOT NULL,
   `fechanacimiento` date NOT NULL,
   `nombreartistico` varchar(50) NOT NULL,
-  `rutaimgperfil` varchar(50) DEFAULT NULL,
+  `rutaimgperfil` varchar(50) DEFAULT '../images/imgperfildefault.png',
   `rutaimgportada` varchar(50) DEFAULT NULL,
-  `usuarioid` int(11) NOT NULL,
-  PRIMARY KEY (`artistaid`),
-  KEY `fk_usuario_artista_idx` (`usuarioid`),
-  CONSTRAINT `fk_usuario_artista` FOREIGN KEY (`usuarioid`) REFERENCES `usuario` (`usuarioid`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+  `email` varchar(45) NOT NULL,
+  `passwd` varchar(45) NOT NULL,
+  PRIMARY KEY (`artistaid`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,7 +73,7 @@ CREATE TABLE `artista` (
 
 LOCK TABLES `artista` WRITE;
 /*!40000 ALTER TABLE `artista` DISABLE KEYS */;
-INSERT INTO `artista` VALUES (2,'Thomas','Hammond','1993-12-27','facilisis,','../images/a6.jpg',NULL,1),(3,'Igor','Kramer','1993-06-12','pretium aliquet,','../images/a8.jpg',NULL,2),(4,'Nathaniel','Mccall','1998-08-10','Pellentesque tincidunt','../images/a8.jpg',NULL,3),(5,'Hayden','Nixon','1986-01-18','arcu','../images/a6.jpg',NULL,4),(6,'Phillip','Boyer','1991-04-05','Morbi neque','../images/a8.jpg',NULL,5),(7,'Gavin','Gilliam','1993-01-28','auctor, velit','../images/a7.jpg',NULL,6),(8,'Nasim','Schwartz','1994-04-12','eu','../images/a8.jpg',NULL,7),(9,'Oren','Tyler','1999-07-22','Etiam','../images/a6.jpg',NULL,8),(10,'Jarrod','Cline','1992-07-30','Donec non','../images/a6.jpg',NULL,9),(11,'Erasmus','Faulkner','1993-06-14','justo. Praesent','../images/a6.jpg',NULL,10),(12,'Bernard','Austin','1996-05-31','neque. Morbi','../images/a8.jpg',NULL,11),(13,'Tarik','Barry','1988-05-20','id magna','../images/a6.jpg',NULL,12),(14,'Robert','Patton','1992-03-06','nunc sed','../images/a7.jpg',NULL,13);
+INSERT INTO `artista` VALUES (2,'Thomas','Hammond','1993-12-27','facilisis,','../images/a6.jpg',NULL,'',''),(3,'Igor','Kramer','1993-06-12','pretium aliquet,','../images/a8.jpg',NULL,'',''),(4,'Nathaniel','Mccall','1998-08-10','Pellentesque tincidunt','../images/a8.jpg',NULL,'',''),(5,'Hayden','Nixon','1986-01-18','arcu','../images/a6.jpg',NULL,'',''),(6,'Phillip','Boyer','1991-04-05','Morbi neque','../images/a8.jpg',NULL,'',''),(7,'Gavin','Gilliam','1993-01-28','auctor, velit','../images/a7.jpg',NULL,'',''),(8,'Nasim','Schwartz','1994-04-12','eu','../images/a8.jpg',NULL,'',''),(9,'Oren','Tyler','1999-07-22','Etiam','../images/a6.jpg',NULL,'',''),(10,'Jarrod','Cline','1992-07-30','Donec non','../images/a6.jpg',NULL,'',''),(11,'Erasmus','Faulkner','1993-06-14','justo. Praesent','../images/a6.jpg',NULL,'',''),(12,'Bernard','Austin','1996-05-31','neque. Morbi','../images/a8.jpg',NULL,'',''),(13,'Tarik','Barry','1988-05-20','id magna','../images/a6.jpg',NULL,'',''),(14,'Robert','Patton','1992-03-06','nunc sed','../images/a7.jpg',NULL,'',''),(15,'pruebanombre','pruebaapelliod','1993-04-13','pruebanombre2','\'../images/imgperfildefault.png\'',NULL,'prueba1@prueba1','12345'),(16,'Nombre2','Apellido2','1980-11-17','Artistico2','../images/imgperfildefault.png',NULL,'prueba2@prueba2','12345'),(17,'nombre3','apellido3','1990-10-20','Artistico 3','../images/imgperfildefault.png',NULL,'prueba3@prueba3','12345'),(21,'4353545','qfqf','1990-03-05','adgadg','../images/imgperfildefault.png',NULL,'afasfgfdg','12345'),(22,'Adriana','Tenorio','1999-05-16','Adriana Music','../images/imgperfildefault.png',NULL,'adriana@tenorio','12345'),(23,'Jesus','Mendoza','1990-02-12','Jesus Music','../images/imgperfildefault.png',NULL,'jesus@mendoza','12345'),(24,'Manuel','Corrado','1990-02-12','Manuel Music','../images/imgperfildefault.png',NULL,'manuel@corrado','12345');
 /*!40000 ALTER TABLE `artista` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,6 +160,58 @@ LOCK TABLES `genero` WRITE;
 /*!40000 ALTER TABLE `genero` DISABLE KEYS */;
 INSERT INTO `genero` VALUES (1,'Rock'),(2,'Pop'),(3,'Blues'),(4,'Funk'),(5,'Metal'),(6,'Jazz'),(7,'Latino'),(8,'Salsa'),(9,'Cumbia'),(10,'Electronica'),(11,'Acústico'),(12,'Punk'),(13,'Reggae'),(14,'Soul');
 /*!40000 ALTER TABLE `genero` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `genero_album`
+--
+
+DROP TABLE IF EXISTS `genero_album`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `genero_album` (
+  `generoid` int(11) NOT NULL,
+  `albumid` int(11) NOT NULL,
+  PRIMARY KEY (`generoid`,`albumid`),
+  KEY `fk_album_genero_idx` (`albumid`),
+  CONSTRAINT `fk_album_genero` FOREIGN KEY (`albumid`) REFERENCES `album` (`albumid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_genero_album` FOREIGN KEY (`generoid`) REFERENCES `genero` (`generoid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `genero_album`
+--
+
+LOCK TABLES `genero_album` WRITE;
+/*!40000 ALTER TABLE `genero_album` DISABLE KEYS */;
+/*!40000 ALTER TABLE `genero_album` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `genero_artista`
+--
+
+DROP TABLE IF EXISTS `genero_artista`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `genero_artista` (
+  `generoid` int(11) NOT NULL,
+  `artistaid` int(11) NOT NULL,
+  PRIMARY KEY (`generoid`,`artistaid`),
+  KEY `fk_artista_idx` (`artistaid`),
+  CONSTRAINT `fk_artista_genero` FOREIGN KEY (`artistaid`) REFERENCES `artista` (`artistaid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_genero_artista` FOREIGN KEY (`generoid`) REFERENCES `genero` (`generoid`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `genero_artista`
+--
+
+LOCK TABLES `genero_artista` WRITE;
+/*!40000 ALTER TABLE `genero_artista` DISABLE KEYS */;
+/*!40000 ALTER TABLE `genero_artista` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -305,4 +356,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-06-07 13:20:32
+-- Dump completed on 2017-06-09 13:28:20
