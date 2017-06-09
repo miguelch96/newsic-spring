@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Newsic Login</title>
+
+</head>
+<body>
+
+	<form name="form" method="POST" th:action="@{/artistas/loginusuario}">
+
+		<div class="form-group">
+			<input type="email" class="form-control"  
+			name="email" placeholder="Email" />
+			
+			 <input type="text" class="form-control" 
+	               name="passwd"  placeholder="Password"/>	                
+	              
+
+			<button type="submit" class="btn btn-lg black p-x-lg">Logearse</button>
+		</div>
+		
+		<span th:text="${message != null} ? ${message} : 'null value!'"></span>
+
+
+	</form>
+
+	<div>
+		Do not have an account? <a th:href="@{/artistas/registro}"
+			class="text-primary _600">Sign up</a>
+	</div>
+
+	<form class="form-inline" method="POST"
+		th:action="@{/artistas/registro}" style="margion: 20px 0">
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">Registrar
+				artista</button>
+		</div>
+	</form>
+
+</body>
+</html>

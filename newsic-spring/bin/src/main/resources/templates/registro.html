@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Newsic - Registro</title>
+
+</head>
+<body>
+
+	<form name="form" method="POST" th:action="@{/artistas}"
+		th:object="${artista}">
+
+		<input type="hidden" th:field="*{artistaid}" />
+		
+		<input type="text" class="form-control" placeholder="Nombre" th:field="*{nombre}"
+		id="nombre" /> 
+		<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">..</span>
+
+		<input type="text" class="form-control" placeholder="Apellido" th:field="*{apellido}" 
+		id="apellido"/>
+		 <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">..</span>
+
+		<input type="date" class="form-control" min="1960-12-31"
+				max="2000-12-31" th:field="*{fechanacimiento}" 
+				id="fechanacimiento"/>
+
+		<input type="text" class="form-control" placeholder="Email"
+				th:field="*{email}" id="email"/> 
+				<span th:if="${#fields.hasErrors('email')}"
+				th:errors="*{email}">..</span>
+
+		<input type="password" class="form-control" placeholder="Password" th:field="*{passwd}"
+		id="passwd" />
+		 <span th:if="${#fields.hasErrors('passwd')}" th:errors="*{passwd}">..</span>
+
+		<input type="text" class="form-control"
+				placeholder="Nombre artistico" th:field="*{nombreartistico}"
+				id="nombreartistico" /> 
+		<span th:if="${#fields.hasErrors('nombreartistico')}" th:errors="*{nombreartistico}">
+		 ..</span>
+
+
+		<!-- 		
+						<div class="form-group">
+							 Imagen de perfil: <br/>
+							 <input type="file" name="file"/><br /> 		                  
+						</div> -->
+
+
+		<button type="submit">Sign Up</button>
+	</form>
+
+</body>
+</html>

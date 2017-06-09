@@ -13,6 +13,7 @@ public interface IArtistaService {
 	
 	//REPOOSITORY
 	Artista findByNombreartistico(String name);
+	Iterable<Artista> findByNombreContaining(String name);
 	Iterable<Artista> findByNombreartisticoContaining(String texto);	
 	Artista findByEmail(String email);
 }

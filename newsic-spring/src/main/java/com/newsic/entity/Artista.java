@@ -10,6 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -47,6 +48,11 @@ public class Artista {
 	@Size(min = 4, max = 20, message = "El password debe tener entre 4 y 20 caracteres")
 	private String passwd;
 	
+	//Numero de canciones
+	//@Query(value ="SELECT COUNT(*) from cancion as c join album as a on c.albumid=a.albumid join artista as x on x.artistaid=a.artistaid where x.artistaid=2;")
+
+
+
 
 	public Artista() {
 

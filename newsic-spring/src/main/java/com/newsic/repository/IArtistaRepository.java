@@ -10,6 +10,7 @@ import com.newsic.entity.Artista;
 public interface IArtistaRepository extends CrudRepository<Artista, Long> {
 	
 	Artista findByNombreartistico(String name);
+	Iterable<Artista> findByNombreContaining(String name);
 	Iterable<Artista> findByNombreartisticoContaining(String texto);
 	Artista findByEmail(String email);
 	

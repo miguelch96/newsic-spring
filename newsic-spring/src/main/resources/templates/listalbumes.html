@@ -5,17 +5,11 @@
 <title>Albumes</title>
 <link rel="apple-touch-icon" href="../images/logo.png"/>
 <link rel="shortcut icon" sizes="196x196" href="../images/logo.png"/>
-<link rel="stylesheet" href="../css/animate.css/animate.min.css"
-	type="text/css"/>
-<link rel="stylesheet" href="../css/glyphicons/glyphicons.css"
-	type="text/css"/>
-<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css"
-	type="text/css"/>
-<link rel="stylesheet"
-	href="../css/material-design-icons/material-design-icons.css"
-	type="text/css"/>
-<link rel="stylesheet" href="../css/bootstrap/dist/css/bootstrap.min.css"
-	type="text/css"/>
+<link rel="stylesheet" href="../css/animate.css/animate.min.css" type="text/css"/>
+<link rel="stylesheet" href="../css/glyphicons/glyphicons.css" type="text/css"/>
+<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css" type="text/css"/>
+<link rel="stylesheet" href="../css/material-design-icons/material-design-icons.css" type="text/css"/>
+<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="../css/styles/app.min.css"  type="text/css"/>
 
 </head>
@@ -80,6 +74,17 @@
 												class="dropdown-item">world</a>
 										</div>
 									</div>
+									
+									
+									<div class="input-group input-group-lg">
+									<form th:action="@{/albumes/buscarpornombre}">
+									<input style="width: 650px ;" type="text" name="filtro" class="form-control active" placeholder="Type keyword" data-ui-toggle-class="hide" data-ui-target="#search-result"/> 
+									<span class="input-group-btn"><button class="btn b-a no-shadow white" type="submit">Search</button></span>
+									</form>
+									</div>
+									
+									
+									
 								</div>
 								<div data-ui-jp="jscroll" class="jscroll-loading-center"
 									data-ui-options="{
@@ -165,6 +170,6 @@
 		
 
 	</div>
-	<script src="scripts/app.min.js"></script>
+	<script src="../scripts/app.min.js"></script>
 </body>
 </html>

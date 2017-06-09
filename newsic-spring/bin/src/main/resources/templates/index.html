@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>NEWSIC</h3>
+	<ul>
+		<li><a th:href="@{/artistas/login}">Login</a></li>
+		
+	</ul>
+	<form class="form-inline" method="POST"
+			th:action="@{/artistas/login}" style="margion: 20px 0">
+			<div class="form-group">
+				<button type="submit" class="btn btn-primary">Login</button>
+			</div>
+		</form>
+</body>
+</html>
+

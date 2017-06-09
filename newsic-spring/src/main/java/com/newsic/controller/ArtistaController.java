@@ -37,6 +37,23 @@ public class ArtistaController {
 		model.addAttribute("generos", generoService.findAll());
 		return "listartistas";
 	}
+	
+	
+	@GetMapping("/buscarpornombre")
+	public String buscarpornombre(Model model, @RequestParam(name="filtro") String filtro)
+	{
+		if(filtro.isEmpty()||filtro.equals(""))
+		{
+			model.addAttribute("artistas", artistaService.findAll());
+		}
+		else
+		{
+			model.addAttribute("artistas", artistaService.findByNombreContaining(filtro));
+		}
+		
+		//model.addAttribute("generos", generoService.findAll());
+		return "listartistas";
+	}
 
 	@GetMapping("/{artistaid}")
 	public String findOne(@PathVariable Long artistaid, Model model) {

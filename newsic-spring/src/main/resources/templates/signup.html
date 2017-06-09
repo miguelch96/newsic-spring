@@ -14,7 +14,7 @@
 <link rel="stylesheet"
 	href="../css/material-design-icons/material-design-icons.css"
 	type="text/css"/>
-<link rel="stylesheet" href="../css/bootstrap/dist/css/bootstrap.min.css"
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	type="text/css"/>
 <link rel="stylesheet" href="../css/styles/app.min.css"  type="text/css"/>
 </head>
@@ -32,6 +32,7 @@
 		<div class="b-t">
 			<div class="center-block w-xxl w-auto-xs p-y-md text-center">
 				<div class="p-a-md">
+				  
 					<div>
 						<a href="#" class="btn btn-block indigo text-white m-b-sm"><i
 							class="fa fa-facebook pull-left"></i> Sign up with Facebook</a> <a
@@ -105,10 +106,20 @@
 					</form>
 					<div class="p-y-lg text-center">
 						<div>
-							Already have an account? <a th:href="@{/usuario/login}"
-								class="text-primary _600">Sign in</a>
+							Already have an account?<!--  <a th:href="@{/usuario/login}"
+								class="text-primary _600">Sign in</a> -->
 						</div>
+						
+						<form class="form-inline" method="POST"
+						th:action="@{/artistas/login}" style="margion: 20px 0">
+						Do not have an account?
+						<div class="form-group">
+							<button type="submit" class="btn btn-primary">Sign in</button>
+						</div>
+					</form>
 					</div>
+					
+					
 				</div>
 			</div>
 		</div>

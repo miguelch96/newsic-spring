@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.newsic.service.IAlbumService;
 import com.newsic.service.ICancionService;
@@ -27,6 +28,21 @@ public class AlbumController {
 	@GetMapping
 	public String findAll(Model model){
 		model.addAttribute("albumes", albumService.findAll());
+		model.addAttribute("generos", generoService.findAll());
+		return "listalbumes";
+	}
+	
+	@GetMapping("/buscarpornombre")
+	public String buscarpornombre(Model model, @RequestParam(name="filtro") String filtro)
+	{
+		if(filtro.isEmpty()||filtro.equals(""))
+		{
+			model.addAttribute("albumes", albumService.findAll());
+		}
+		else
+		{
+			model.addAttribute("albumes", albumService.findByNombreContaining(filtro));
+		}
 		model.addAttribute("generos", generoService.findAll());
 		return "listalbumes";
 	}
