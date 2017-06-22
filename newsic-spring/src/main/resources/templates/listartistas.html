@@ -4,16 +4,21 @@
 <head>
 <meta charset="utf-8" />
 <title>Lista de artistas</title>
-<link rel="apple-touch-icon" href="../images/logo.png" />
-<link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
-<link rel="stylesheet" href="../css/animate.css/animate.min.css" type="text/css" />
-<link rel="stylesheet" href="../css/glyphicons/glyphicons.css" type="text/css" />
-<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css" type="text/css" />
-<link rel="stylesheet" href="../css/material-design-icons/material-design-icons.css" type="text/css" />
-<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="../css/styles/app.min.css" type="text/css" />
+<link rel="apple-touch-icon" href="/images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="/images/logo.png" />
+<link rel="stylesheet" href="/css/animate.css/animate.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons/glyphicons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="/css/material-design-icons/material-design-icons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/styles/app.min.css" type="text/css" />
 </head>
-<body>
+<body class="pace-done black">
 	<div class="app dk" id="app">
 
 		<!-- PANEL IZQUIERDO -->
@@ -34,24 +39,28 @@
 									<div class="dropdown inline">
 										<button
 											class="btn btn-sm no-bg h4 m-y-0 v-b dropdown-toggle text-primary"
-											data-toggle="dropdown">Por nombre</button>
+											data-toggle="dropdown">Por genero</button>
 										<div class="dropdown-menu">
-											<a href="#" class="dropdown-item active">Por nombre</a> <a
-												href="#" class="dropdown-item">Canciones</a>
+											<a th:href="@{'/artistas/genero/0'}" class="dropdown-item">Todos</a>
+												<a th:href="${'/artistas/genero/'+ genero.generoid}"
+												th:each="genero:${generos}" class="dropdown-item"
+												th:text="${genero.nombre}"></a>
 										</div>
 									</div>
-									
+
 									<div class="input-group input-group-lg">
-									
-									<form th:action="@{/artistas/buscarpornombre}">
-									<input style="width: 650px ;" type="text" name="filtro" class="form-control active" placeholder="Type keyword" data-ui-toggle-class="hide" data-ui-target="#search-result"/> 
-									<span class="input-group-btn"><button class="btn b-a no-shadow white" type="submit">Search</button></span>
-									</form>
+										<form th:action="@{/artistas/buscarpornombre}">
+											<input style="width: 650px;" type="text" name="filtro"
+												class="form-control active" placeholder="Type keyword"
+												data-ui-toggle-class="hide" data-ui-target="#search-result" />
+											<span class="input-group-btn"><button
+													class="btn b-a no-shadow white" type="submit">Search</button></span>
+										</form>
 									</div>
-									
-									
-									
-									</div>
+
+
+
+								</div>
 								<div data-ui-jp="jscroll"
 									data-ui-options="{autoTrigger: false,
 									 
@@ -96,10 +105,10 @@
 								<div class="row item-list item-list-sm m-b">
 									<div class="col-xs-12">
 										<div class="item r" data-id="item-11"
-											data-src="../audio/audiodefault.mp3">
+											data-src="/audio/audiodefault.mp3">
 											<div class="item-media">
 												<a href="#" class="item-media-content"
-													style="background-image: url('../images/b10.jpg')"></a>
+													style="background-image: url('/images/b10.jpg')"></a>
 											</div>
 											<div class="item-info">
 												<div class="item-title text-ellipsis">
@@ -144,6 +153,6 @@
 
 
 	</div>
-	<script src="../scripts/app.min.js"></script>
+	<script src="/scripts/app.min.js"></script>
 </body>
 </html>

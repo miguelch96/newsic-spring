@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>CREAR ALBUM</title>
+<link rel="apple-touch-icon" href="/images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="/images/logo.png" />
+<link rel="stylesheet" href="/css/animate.css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons/glyphicons.css" type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/material-design-icons/material-design-icons.css" type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/styles/app.min.css" type="text/css" />
+</head>
+<body class="pace-done black">
+<div class="app dk" id="app">
+		<div class="padding">
+			<div class="navbar">
+				<div class="pull-center">
+					<a href="index-2.html" class="navbar-brand md"><img
+						src="/images/logo.png" alt="." class="hide" /> <span
+						class="hidden-folded inline">Añadir album</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="b-t">
+			<div class="center-block w-xxl w-auto-xs p-y-md text-center">
+				<div class="p-a-md">
+					  <form method="POST" th:action="@{/albumes/new}" 
+	              th:object="${album}" enctype="multipart/form-data" style="margion:20px 0">
+	              	<input type="hidden" th:field="*{albumid}"/>   
+	              	<div class="form-group">
+	             	<input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre del album"/>
+	                 <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">..</span>
+	                </div>
+	                	<div class="form-group">
+	                	<p>Seleccionar fecha de publicación:</p>
+							<input type="date" class="form-control" min="2014-12-31"
+								max="2017-3-3" th:field="*{fechapublicacion}"
+								id="fechapublicacion" />
+						</div>
+	                <div class="form-group">
+	                <p>Adjunta el archivo: </p>
+	                <input type="file" name="imgalbum"/>
+	               </div>
+	               
+	                 <div class="form-group">
+	                 <p>Seleccionar un artista:</p>
+	                 <select class="form-control" th:field="*{artista.artistaid}">
+                    	<option th:each="artista:${artistas}" 
+                    			th:value="${artista.artistaid}"
+                    			th:text="${artista.nombre+' '+artista.apellido}"></option>
+                    </select>
+	                </div>
+	                 <div style="padding-top: 30px;">
+	                <button class="btn btn-lg black p-x-lg" type="submit">Crear album</button>
+	                </div>
+	                  <br/>
+	                 <span th:text="${message != null} ? ${message} : ' '"></span>
+	             
+	          </form>
+					<div class="p-y-lg text-center" style="padding-top:0px;">
+						<div>
+						<a  th:href="@{/artistas}" class="text-primary _600">Cancelar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/scripts/app.min.js"></script>
+</body>
+</html>

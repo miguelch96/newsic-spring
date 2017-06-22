@@ -12,4 +12,6 @@ public interface IGeneroService {
 	//REPOSITORY
 	Genero findByNombre(String name);
 	Iterable<Genero> findByNombreContaining(String texto);
+	Iterable<Genero> generosdelArtista(Long artistaid);
+	Iterable<Genero> generosdelAlbum(Long albumid);
 }

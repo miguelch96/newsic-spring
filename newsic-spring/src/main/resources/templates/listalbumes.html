@@ -1,31 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-<meta charset="utf-8"/>
+<meta charset="utf-8" />
 <title>Albumes</title>
-<link rel="apple-touch-icon" href="../images/logo.png"/>
-<link rel="shortcut icon" sizes="196x196" href="../images/logo.png"/>
-<link rel="stylesheet" href="../css/animate.css/animate.min.css" type="text/css"/>
-<link rel="stylesheet" href="../css/glyphicons/glyphicons.css" type="text/css"/>
-<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css" type="text/css"/>
-<link rel="stylesheet" href="../css/material-design-icons/material-design-icons.css" type="text/css"/>
-<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" href="../css/styles/app.min.css"  type="text/css"/>
+<link rel="apple-touch-icon" href="/images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="/images/logo.png" />
+<link rel="stylesheet" href="/css/animate.css/animate.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons/glyphicons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="/css/material-design-icons/material-design-icons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/styles/app.min.css" type="text/css" />
 
 </head>
-<body>
+<body class="pace-done black">
 	<div class="app dk" id="app">
-		
+
 		<!-- PANEL IZQUIERDO -->
-		<div th:replace="fragment/panelizquierdo"></div>		
-		
+		<div th:replace="fragment/panelizquierdo"></div>
+
 		<div id="content" class="app-content white bg box-shadow-z2"
 			role="main">
 			<div class="app-header hidden-lg-up white lt box-shadow-z1">
 				<div class="navbar">
-					<a href="#" class="navbar-brand md"> <img
-						src="images/logo.png" alt="." class="hide"/> <span
-						class="hidden-folded inline">pulse</span></a>
+					<a href="#" class="navbar-brand md"> <img src="images/logo.png"
+						alt="." class="hide" /> <span class="hidden-folded inline">pulse</span></a>
 					<ul class="nav navbar-nav pull-right">
 						<li class="nav-item"><a data-toggle="modal"
 							data-target="#aside" class="nav-link"><i
@@ -47,44 +51,32 @@
 										<button
 											class="btn btn-sm no-bg h4 m-y-0 v-b dropdown-toggle text-primary"
 											data-toggle="dropdown">All</button>
+
+										<!-- BUSQUEDA POR GENEROS -->
+										<!-- <a href="#" class="dropdown-item active">All</a> -->
 										<div class="dropdown-menu">
-											<a href="#" class="dropdown-item active">All</a> 
-											<a href="#"
-												class="dropdown-item">acoustic</a> <a href="#"
-												class="dropdown-item">ambient</a> <a href="#"
-												class="dropdown-item">blues</a> <a href="#"
-												class="dropdown-item">classical</a> <a href="#"
-												class="dropdown-item">country</a> <a href="#"
-												class="dropdown-item">electronic</a> <a href="#"
-												class="dropdown-item">emo</a> <a href="#"
-												class="dropdown-item">folk</a> <a href="#"
-												class="dropdown-item">hardcore</a> <a href="#"
-												class="dropdown-item">hip hop</a> <a href="#"
-												class="dropdown-item">indie</a> <a href="#"
-												class="dropdown-item">jazz</a> <a href="#"
-												class="dropdown-item">latin</a> <a href="#"
-												class="dropdown-item">metal</a> <a href="#"
-												class="dropdown-item">pop</a> <a href="#"
-												class="dropdown-item">pop punk</a> <a href="#"
-												class="dropdown-item">punk</a> <a href="#"
-												class="dropdown-item">reggae</a> <a href="#"
-												class="dropdown-item">rnb</a> <a href="#"
-												class="dropdown-item">rock</a> <a href="#"
-												class="dropdown-item">soul</a> <a href="#"
-												class="dropdown-item">world</a>
+											<a th:href="@{'/albumes/genero/0'}" class="dropdown-item">Todos</a>
+											<a th:each="genero:${generos}"
+												th:href="${'/albumes/genero/'+ genero.generoid}"
+												class="dropdown-item" th:text="${genero.nombre}"></a>
 										</div>
+
+
 									</div>
-									
-									
+
+
 									<div class="input-group input-group-lg">
-									<form th:action="@{/albumes/buscarpornombre}">
-									<input style="width: 650px ;" type="text" name="filtro" class="form-control active" placeholder="Type keyword" data-ui-toggle-class="hide" data-ui-target="#search-result"/> 
-									<span class="input-group-btn"><button class="btn b-a no-shadow white" type="submit">Search</button></span>
-									</form>
+										<form th:action="@{/albumes/buscarpornombre}">
+											<input style="width: 650px;" type="text" name="filtro"
+												class="form-control active" placeholder="Type keyword"
+												data-ui-toggle-class="hide" data-ui-target="#search-result" />
+											<span class="input-group-btn"><button
+													class="btn b-a no-shadow white" type="submit">Search</button></span>
+										</form>
 									</div>
-									
-									
-									
+
+
+
 								</div>
 								<div data-ui-jp="jscroll" class="jscroll-loading-center"
 									data-ui-options="{
@@ -94,11 +86,13 @@
             nextSelector: 'a.jscroll-next:last'
           }">
 									<div class="row">
-										<div class="col-xs-4 col-sm-4 col-md-3" th:each="album:${albumes}">
+										<div class="col-xs-4 col-sm-4 col-md-3"
+											th:each="album:${albumes}">
 											<div class="item r" data-id="item-5"
-												data-src="../audio/audiodefault.mp3">
+												data-src="/audio/audiodefault.mp3">
 												<div class="item-media">
-													<a th:href="${'/albumes/' + album.albumid}" class="item-media-content"
+													<a th:href="${'/albumes/' + album.albumid}"
+														class="item-media-content"
 														th:style="'background-image: url(' + ${album.rutaimgalbum}   +');'"></a>
 													<div class="item-overlay center">
 														<button class="btn-playpause">Play</button>
@@ -112,18 +106,17 @@
 														<div class="dropdown-menu pull-right black lt"></div>
 													</div>
 													<div class="item-title text-ellipsis">
-														<a href="track.detail.html"
-														th:text="${album.nombre}">..</a>
+														<a href="track.detail.html" th:text="${album.nombre}">..</a>
 													</div>
 													<div class="item-author text-sm text-ellipsis">
 														<a href="artist.detail.html" class="text-muted"
-														 th:text="${album.artista.nombre+' '+album.artista.apellido}">..</a>
+															th:text="${album.artista.nombre+' '+album.artista.apellido}">..</a>
 													</div>
 												</div>
 											</div>
 										</div>
-										
-										
+
+
 									</div>
 									<div class="text-center">
 										<a href="scroll.item.html"
@@ -132,8 +125,8 @@
 								</div>
 							</div>
 						</div>
-						
-						
+
+
 						<div class="col-lg-3 w-xxl w-auto-md">
 							<div class="padding" style="bottom: 60px"
 								data-ui-jp="stick_in_parent">
@@ -141,7 +134,7 @@
 								<div class="row item-list item-list-sm m-b">
 									<div class="col-xs-12">
 										<div class="item r" data-id="item-9"
-											data-src="../audio/audiodefault.mp3">
+											data-src="/audio/audiodefault.mp3">
 											<div class="item-media">
 												<a href="track.detail.html" class="item-media-content"
 													style="background-image: url('images/b8.jpg')"></a>
@@ -157,19 +150,19 @@
 											</div>
 										</div>
 									</div>
-									
+
 								</div>
-								
-						
+
+
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		
+
 
 	</div>
-	<script src="../scripts/app.min.js"></script>
+	<script src="/scripts/app.min.js"></script>
 </body>
 </html>

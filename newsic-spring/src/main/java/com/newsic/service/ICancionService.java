@@ -19,4 +19,5 @@ public interface ICancionService {
 	public Iterable<Cancion> findByGenero(Genero genero);
 	public Iterable<Cancion> findByAlbum(Album album);
 	public Iterable<Cancion> findByArtista(Long artistaid);
+	Iterable<Cancion> MejoresCancionesDelArtista(Long artistaid);
 }

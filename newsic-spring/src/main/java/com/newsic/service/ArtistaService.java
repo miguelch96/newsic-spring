@@ -11,8 +11,7 @@ public class ArtistaService implements IArtistaService {
 
 	@Autowired
 	private IArtistaRepository artistaRepository;
-	
-	
+
 	@Override
 	public Iterable<Artista> findAll() {
 		return artistaRepository.findAll();
@@ -20,7 +19,9 @@ public class ArtistaService implements IArtistaService {
 
 	@Override
 	public void save(Artista artista) {
-		artista.setRutaimgperfil("../images/imgperfildefault.png");
+
+		if (artista.getRutaimgperfil().equals(""))
+			artista.setRutaimgperfil("../images/imgperfildefault.png");
 		artistaRepository.save(artista);
 	}
 
@@ -35,18 +36,25 @@ public class ArtistaService implements IArtistaService {
 	}
 
 	@Override
-	public Iterable<Artista> findByNombreartisticoContaining(String texto) {
-		return artistaRepository.findByNombreartisticoContaining(texto);
-	}
-
-	@Override
 	public Artista findByEmail(String email) {
 		return artistaRepository.findByEmail(email);
 	}
 
 	@Override
-	public Iterable<Artista> findByNombreContaining(String name) {
-		return artistaRepository.findByNombreContaining(name);
+	public Iterable<Artista> findByNombreContaining(String texto) {
+		return artistaRepository.findByNombreContaining(texto);
 	}
+
+	@Override
+	public Iterable<Artista> findByApellidoContaining(String texto) {
+		return artistaRepository.findByApellidoContaining(texto);
+	}
+
+	@Override
+	public Iterable<Artista> findArtistasDelGenero(Long generoid) {
+		return artistaRepository.findArtistasDelGenero(generoid);
+	}
+
+
 
 }

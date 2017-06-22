@@ -43,4 +43,14 @@ public class GeneroService implements IGeneroService{
 		return generoRepository.findByNombreContaining(texto);
 	}
 
+	@Override
+	public Iterable<Genero> generosdelArtista(Long artistaid) {
+		return generoRepository.generosdelArtista(artistaid);
+	}
+
+	@Override
+	public Iterable<Genero> generosdelAlbum(Long albumid) {
+		return generoRepository.generosdelAlbum(albumid);
+	}
+
 }

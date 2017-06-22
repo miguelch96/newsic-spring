@@ -1,10 +1,13 @@
 package com.newsic.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -37,6 +40,9 @@ public class Cancion {
 	@ManyToOne
 	@JoinColumn(name="generoid")
 	private Genero genero;
+	
+	@ManyToMany(mappedBy="lstcanciones")
+	private List<Playlist> lstplaylist;
 	
 	
 	public Cancion()
@@ -113,6 +119,18 @@ public class Cancion {
 	public void setRutacancion(String rutacancion) {
 		this.rutacancion = rutacancion;
 	}
+
+
+	public List<Playlist> getLstplaylist() {
+		return lstplaylist;
+	}
+
+
+	public void setLstplaylist(List<Playlist> lstplaylist) {
+		this.lstplaylist = lstplaylist;
+	}
+	
+	
 	
 	
 

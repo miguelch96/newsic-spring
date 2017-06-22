@@ -8,12 +8,11 @@ import com.newsic.entity.Artista;
 import com.newsic.repository.IAlbumRepository;
 
 @Service
-public class AlbumService implements IAlbumService{
+public class AlbumService implements IAlbumService {
 
-	
 	@Autowired
 	private IAlbumRepository albumRepository;
-	
+
 	@Override
 	public Iterable<Album> findAll() {
 		return albumRepository.findAll();
@@ -21,6 +20,14 @@ public class AlbumService implements IAlbumService{
 
 	@Override
 	public void save(Album album) {
+
+		/*
+		 * Calendar cal = Calendar.getInstance(); Date
+		 * fechaactual=cal.getTime(); album.setFechapublicacion(fechaactual);
+		 */
+
+		if (album.getRutaimgalbum().equals(""))
+			album.setRutaimgalbum("../images/imgalbumes/imgalbumdefault.jpg");
 
 		albumRepository.save(album);
 	}
@@ -48,6 +55,16 @@ public class AlbumService implements IAlbumService{
 	@Override
 	public Iterable<Album> findByArtista(Artista artista) {
 		return albumRepository.findByArtista(artista);
+	}
+
+	@Override
+	public Iterable<Album> findAlbumesDelGenero(Long generoid) {
+		return albumRepository.findAlbumesDelGenero(generoid);
+	}
+
+	@Override
+	public Iterable<Album> MejoresAlbumesDelArtista(Long artistaid) {
+		return albumRepository.MejoresAlbumesDelArtista(artistaid);
 	}
 
 }

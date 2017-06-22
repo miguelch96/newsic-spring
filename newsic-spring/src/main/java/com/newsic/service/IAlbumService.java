@@ -15,5 +15,7 @@ public interface IAlbumService {
 	public Album findByNombre(String name);
 	public Iterable<Album> findByNombreContaining(String texto);
 	public Iterable<Album> findByArtista(Artista artista);
+	Iterable<Album> findAlbumesDelGenero(Long generoid);
+	Iterable<Album> MejoresAlbumesDelArtista(Long artistaid);
 
 }

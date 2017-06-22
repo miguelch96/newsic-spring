@@ -1,6 +1,11 @@
 package com.newsic.entity;
 
-import java.sql.Date;
+
+
+
+
+
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,11 +36,12 @@ public class Album {
 	@Size(min=4,max=20,message="El nombre del album debe tener entre 4 y 20 caracteres")
 	private String nombre;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date fechapublicacion;
 	
 
 	private String rutaimgalbum;
+
 	
 	public Album()
 	{

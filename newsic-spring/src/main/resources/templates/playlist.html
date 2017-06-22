@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Playlist nombre</title>
+<link rel="apple-touch-icon" href="/images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="/images/logo.png" />
+<link rel="stylesheet" href="/css/animate.css/animate.min.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons/glyphicons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="/css/material-design-icons/material-design-icons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/styles/app.min.css" type="text/css" />
+</head>
+<body class="pace-done black">
+	<div class="app dk" id="app">
+
+		<!-- PANEL IZQUIERDO -->
+		<div th:replace="fragment/panelizquierdo"></div>
+
+		<div id="content" class="app-content white bg box-shadow-z2"
+			role="main">
+			<div class="app-header hidden-lg-up white lt box-shadow-z1">
+				<div class="navbar">
+					<a href="#" class="navbar-brand md"> <img
+						src="/images/logo.png" alt="." class="hide"/> <span
+						class="hidden-folded inline">newsic</span></a>
+					<ul class="nav navbar-nav pull-right">
+						<li class="nav-item"><a data-toggle="modal"
+							data-target="#aside" class="nav-link"><i
+								class="material-icons">menu</i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="app-footer app-player grey bg">
+				<div class="playlist" style="width: 100%"></div>
+			</div>
+			<div class="app-body" id="view">
+				<div class="page-content">
+					<div class="row-col">
+						<div class="col-lg-9 b-r no-border-md">
+							<div class="padding">
+								<div class="page-title m-b">
+									<h1 class="inline m-a-0" th:text="${playlist.nombre}">Charts</h1>
+									<div class="dropdown inline">
+										<button
+											class="btn btn-sm no-bg h4 m-y-0 v-b dropdown-toggle text-primary"
+											data-toggle="dropdown">Ordenar por</button>
+										<div class="dropdown-menu">
+											<a href="#" class="dropdown-item active">Nombre</a> <a
+												href="#" class="dropdown-item">Fecha de adicion</a> <a href="#"
+												class="dropdown-item">Duracion</a> <a href="#"
+												class="dropdown-item">Artista</a>
+										</div>
+									</div>
+								</div>
+								<div class="row item-list item-list-md item-list-li m-b">
+									<div class="col-xs-12" th:each="cancion:${canciones}">
+										<div class="item r" data-id="item-8"
+											th:attr="data-src=${cancion.rutacancion}">
+											<div class="item-media">
+												<a href="#" class="item-media-content"
+													th:style="'background-image: url(' + ${cancion.album.rutaimgalbum}   +');'"></a>
+												<div class="item-overlay center">
+													<button class="btn-playpause">Play</button>
+												</div>
+											</div>
+											<div class="item-info">
+												<div class="item-overlay bottom text-right">
+													<a href="#" class="btn-favorite"><i
+														class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+														data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+													<div class="dropdown-menu pull-right black lt"></div>
+												</div>
+												<div class="item-title text-ellipsis">
+													<a th:href="${'/albumes/'+cancion.album.albumid}" th:text="${cancion.nombre}">Nombre cancion</a>
+												</div>
+												<div class="item-author text-sm text-ellipsis">
+													<a th:href="${'/artistas/'+cancion.album.artista.artistaid}" class="text-muted" th:text="${cancion.album.artista.nombre+' '+cancion.album.artista.apellido}">Nombre artista</a>
+												</div>
+												<div class="item-meta text-sm text-muted">
+													<span class="item-meta-stats text-xs item-meta-right"><i
+														class="fa fa-play text-muted"></i> 400 <i
+														class="fa fa-heart m-l-sm text-muted"></i> 220</span>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 w-xxl w-auto-md">
+							<div class="padding" style="bottom: 60px"
+								data-ui-jp="stick_in_parent">
+								<h6 class="text text-muted">5 Likes</h6>
+								<div class="row item-list item-list-sm m-b">
+									<div class="col-xs-12">
+										<div class="item r" data-id="item-8"
+											data-src="http://api.soundcloud.com/tracks/236288744/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+											<div class="item-media">
+												<a href="track.detail.html" class="item-media-content"
+													style="background-image: url('images/b7.jpg')"></a>
+											</div>
+											<div class="item-info">
+												<div class="item-title text-ellipsis">
+													<a href="track.detail.html">Simple Place To Be</a>
+												</div>
+												<div class="item-author text-sm text-ellipsis">
+													<a href="artist.detail.html" class="text-muted">RYD</a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<script src="/scripts/app.min.js"></script>
+</body>
+</html>

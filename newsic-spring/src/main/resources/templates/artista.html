@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="../css/styles/app.min.css"  type="text/css"/>
 
 </head>
-<body>
+<body class="pace-done black">
 	<div class="app dk" id="app">
 
 		<!-- PANEL IZQUIERDO -->
@@ -35,7 +35,7 @@
 			<div class="app-body" id="view">
 				<div class="pos-rlt">
 					<div class="page-bg" data-stellar-ratio="2"
-						style="background-image: url('../images/b5.jpg')"></div>
+						th:style="'background-image: url(' + ${artista.rutaimgperfil}   +');'"></div>
 				</div>
 				<div class="page-content">
 					<div class="padding b-b">
@@ -71,9 +71,9 @@
 										<button class="btn-playpause text-primary m-r-sm"></button>
 										<span>9 Albums, 105 Tracks</span>
 									</div>
-									<div class="block clearfix m-b">
-										<a class="btn btn-xs rounded white">Soul</a> <a
-											class="btn btn-xs rounded white">Electro</a>
+									<!-- GENEROS DEL ARTISTA -->
+									<div class="block clearfix m-b" >
+										<a th:each="genero:${generosartista}" class="btn btn-xs rounded white" th:text="${genero.nombre}"></a> 				
 									</div>
 								</div>
 							</div>
@@ -87,13 +87,13 @@
 										<!-- CONFIGURACION TABS -->
 										<li class="nav-item m-r inline"><a
 											class="nav-link active" href="#" data-toggle="tab"
-											data-target="#tab_1">Overview</a></li>
+											data-target="#tab_1">Destacados</a></li>
 										<li class="nav-item m-r inline"><a class="nav-link"
-											href="#" data-toggle="tab" data-target="#tab_2">Tracks</a></li>
+											href="#" data-toggle="tab" data-target="#tab_2">Canciones</a></li>
 										<li class="nav-item m-r inline"><a class="nav-link"
-											href="#" data-toggle="tab" data-target="#tab_3">Playlists</a></li>
+											href="#" data-toggle="tab" data-target="#tab_3">Albumes</a></li>
 										<li class="nav-item m-r inline"><a class="nav-link"
-											href="#" data-toggle="tab" data-target="#tab_4">Profile</a></li>
+											href="#" data-toggle="tab" data-target="#tab_4">Redes sociales</a></li>
 									</ul>
 								</div>
 								<div class="tab-content">
@@ -102,16 +102,16 @@
 									<div class="tab-pane active" id="tab_1">
 
 										<!-- TAP POPULAR - CANCIONES POPULARES -->
-										<h5 class="m-b">Popular</h5>
+										<h5 class="m-b">Sus mejores canciones</h5>
 										<div class="row item-list item-list-md item-list-li m-b"
 											id="tracks">
 											<!-- CANCION POPULAR -->
-											<div class="col-md-12 col-lg-6">
+											<div class="col-md-12 col-lg-6" th:each="cancion:${mejorescanciones}">
 												<div class="item r" data-id="item-3"
-													data-src="../audio/audiodefault.mp3">
+													th:attr="data-src=${cancion.rutacancion}">
 													<div class="item-media">
 														<a href="#" class="item-media-content"
-															style="background-image: url('../images/b2.jpg')"></a>
+															th:style="'background-image: url(' + ${cancion.album.rutaimgalbum}   +');'"></a>
 														<div class="item-overlay center">
 															<button class="btn-playpause">Play</button>
 														</div>
@@ -124,7 +124,7 @@
 															<div class="dropdown-menu pull-right black lt"></div>
 														</div>
 														<div class="item-title text-ellipsis">
-															<a href="#">I Wanna Be In the Cavalry</a>
+															<a href="#" th:text="${cancion.nombre}">Nombre cancion</a>
 														</div>
 														<div class="item-author text-sm text-ellipsis hide">
 															<a href="#" class="text-muted">Jeremy
@@ -141,12 +141,12 @@
 										</div>
 
 										<!--TAP POPULAR- ALBUMES POPULARES -->
-										<h5 class="m-b">Albums</h5>
+										<h5 class="m-b">Sus mejores albumes</h5>
 										<!-- LISTA ALBUMES POPULARES -->
 										<div class="row m-b">
 											<!-- ALBUM -->
 											<div class="col-xs-4 col-sm-4 col-md-3"
-												th:each="album:${albumes}">
+												th:each="album:${mejoresalbumes}">
 												<div class="item r" data-id="item-10"
 													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
@@ -235,15 +235,15 @@
 										<a href="#" class="btn btn-sm white rounded">Show More</a>
 									</div>
 
-									<!-- TAB PLAYLIST -->
+									<!-- TAB ALBUMES -->
 									<div class="tab-pane" id="tab_3">
 										<div class="row m-b">
-											<div class="col-xs-4 col-sm-4 col-md-3">
+											<div class="col-xs-4 col-sm-4 col-md-3" th:each="album:${albumes}">
 												<div class="item r" data-id="item-1"
 													data-src="../audio/audiodefault.mp3">
 													<div class="item-media">
 														<a href="#" class="item-media-content"
-															style="background-image: url('../images/b0.jpg')"></a>
+															th:style="'background-image: url(' + ${album.rutaimgalbum}   +');'"></a>
 														<div class="item-overlay center">
 															<button class="btn-playpause">Play</button>
 														</div>
@@ -256,7 +256,7 @@
 															<div class="dropdown-menu pull-right black lt"></div>
 														</div>
 														<div class="item-title text-ellipsis">
-															<a href="#">Pull Up</a>
+															<a href="#" th:text="${album.nombre}">Nombre album</a>
 														</div>
 														<div class="item-author text-sm text-ellipsis hide">
 															<a href="#" class="text-muted">Summerella</a>
@@ -281,7 +281,7 @@
 										<div class="row-col m-b">
 											<div class="col-xs w-xs text-muted">Website</div>
 											<div class="col-xs">
-												<a href="http://rachel-platten.com/">http://rachel-platten.com</a>
+												<a href="http://rachel-platten.com/" th:text="${'http://'+artista.nombre+'-'+artista.apellido+'.com'}">http://rachel-platten.com</a>
 											</div>
 										</div>
 										<div class="row-col m-b">

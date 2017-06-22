@@ -3,22 +3,16 @@
 <head>
 <meta charset="utf-8" />
 <title>Newsic - Registro</title>
-<link rel="apple-touch-icon" href="../images/logo.png"/>
-<link rel="shortcut icon" sizes="196x196" href="../images/logo.png"/>
-<link rel="stylesheet" href="../css/animate.css/animate.min.css"
-	type="text/css"/>
-<link rel="stylesheet" href="../css/glyphicons/glyphicons.css"
-	type="text/css"/>
-<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css"
-	type="text/css"/>
-<link rel="stylesheet"
-	href="../css/material-design-icons/material-design-icons.css"
-	type="text/css"/>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	type="text/css"/>
-<link rel="stylesheet" href="../css/styles/app.min.css"  type="text/css"/>
+<link rel="apple-touch-icon" href="/images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="/images/logo.png" />
+<link rel="stylesheet" href="/css/animate.css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons/glyphicons.css" type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/material-design-icons/material-design-icons.css" type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/styles/app.min.css" type="text/css" />
 </head>
-<body>
+<body class="pace-done black">
 	<div class="app dk" id="app">
 		<div class="padding">
 			<div class="navbar">
@@ -32,7 +26,6 @@
 		<div class="b-t">
 			<div class="center-block w-xxl w-auto-xs p-y-md text-center">
 				<div class="p-a-md">
-				  
 					<div>
 						<a href="#" class="btn btn-block indigo text-white m-b-sm"><i
 							class="fa fa-facebook pull-left"></i> Sign up with Facebook</a> <a
@@ -42,17 +35,21 @@
 					<div class="m-y text-sm">OR</div>
 
 
-					<form name="form" method="POST" th:action="@{/artistas}"
-						th:object="${artista}">
+					<form name="form" method="POST" th:action="@{/artistas/registro}"
+						th:object="${artista}" enctype="multipart/form-data">
 
+
+						<!-- ID -->
 						<input type="hidden" th:field="*{artistaid}" />
 
+						<!-- NOMBRE DEL ARTISTA -->
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Nombre"
 								th:field="*{nombre}" id="nombre" /> <span
 								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">..</span>
 						</div>
 
+						<!-- APELLIDO DEL ARTISTA -->
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Apellido"
 								th:field="*{apellido}" id="apellido" /> <span
@@ -60,24 +57,32 @@
 
 						</div>
 
+
+						<!--FECHA DE NACIMIENTO -->
 						<div class="form-group">
 							<input type="date" class="form-control" min="1960-12-31"
 								max="2000-12-31" th:field="*{fechanacimiento}"
-								id="fechanacimiento" />
+								id="fechanacimiento" />						
 						</div>
 
+
+						<!--EMAIL -->
 						<div class="form-group">
 							<input type="text" class="form-control" placeholder="Email"
 								th:field="*{email}" id="email" /> <span
 								th:if="${#fields.hasErrors('email')}" th:errors="*{email}">..</span>
 						</div>
 
+
+						<!--PASSWORD -->
 						<div class="form-group">
 							<input type="password" class="form-control"
 								placeholder="Password" th:field="*{passwd}" id="passwd" /> <span
 								th:if="${#fields.hasErrors('passwd')}" th:errors="*{passwd}">..</span>
 						</div>
 
+
+						<!--NOMBRE ARTISTICO -->
 						<div class="form-group">
 							<input type="text" class="form-control"
 								placeholder="Nombre artistico" th:field="*{nombreartistico}"
@@ -87,11 +92,13 @@
 
 						</div>
 
-						<!-- 		
+
+
+						<!--IMAGEN DE PERFIL -->
 						<div class="form-group">
-							 Imagen de perfil: <br/>
-							 <input type="file" name="file"/><br /> 		                  
-						</div> -->
+							Sube tu foto: <br /> <input type="file"
+								name="imgperfil" required="required"/><br />
+						</div>
 
 
 
@@ -106,24 +113,14 @@
 					</form>
 					<div class="p-y-lg text-center">
 						<div>
-							Already have an account?<!--  <a th:href="@{/usuario/login}"
-								class="text-primary _600">Sign in</a> -->
+							Already have an account? <a th:href="@{/artistas/login}"
+								class="text-primary _600">Sign in</a>
 						</div>
-						
-						<form class="form-inline" method="POST"
-						th:action="@{/artistas/login}" style="margion: 20px 0">
-						Do not have an account?
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary">Sign in</button>
-						</div>
-					</form>
 					</div>
-					
-					
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="../scripts/app.min.js"></script>
+	<script src="/scripts/app.min.js"></script>
 </body>
 </html>

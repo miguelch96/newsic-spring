@@ -5,20 +5,14 @@
 <title>Newsic Login</title>
 <link rel="apple-touch-icon" href="../images/logo.png" />
 <link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
-<link rel="stylesheet" href="../css/animate.css/animate.min.css"
-	type="text/css" />
-<link rel="stylesheet" href="../css/glyphicons/glyphicons.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="../css/font-awesome/css/font-awesome.min.css" type="text/css" />
-<link rel="stylesheet"
-	href="../css/material-design-icons/material-design-icons.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="../css/animate.css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="../css/glyphicons/glyphicons.css" type="text/css" />
+<link rel="stylesheet" href="../css/font-awesome/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="../css/material-design-icons/material-design-icons.css" type="text/css" />
+<link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="../css/styles/app.min.css" type="text/css" />
 </head>
-<body>
+<body class="pace-done black">
 	<div class="app dk" id="app">
 		<div class="padding">
 			<div class="navbar">
@@ -31,10 +25,7 @@
 		</div>
 		<div class="b-t">
 			<div class="center-block w-xxl w-auto-xs p-y-md text-center">
-			
-			
 				<div class="p-a-md">
-				
 					<div>
 						<a href="#" class="btn btn-block indigo text-white m-b-sm"><i
 							class="fa fa-facebook pull-left"></i> Sign in with Facebook</a> <a
@@ -46,7 +37,7 @@
 
 
 					<form name="form" method="POST"
-						th:action="@{/artistas/loginusuario}">
+						th:action="@{/artistas/login}">
 
 						<div class="form-group">
 							<input type="email" class="form-control" name="email"
@@ -77,19 +68,13 @@
 						<a href="#" class="_600">Forgot password?</a>
 					</div>
 
-					<!-- 
+					
 					<div>
 						Do not have an account? <a th:href="@{/artistas/registro}"
 							class="text-primary _600">Sign up</a>
-					</div> -->
-
-					<form class="form-inline" method="POST"
-						th:action="@{/artistas/registro}" style="margion: 20px 0">
-						Do not have an account?
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary">Sign up</button>
-						</div>
-					</form>
+					</div>
+					
+					
 				</div>
 			</div>
 		</div>

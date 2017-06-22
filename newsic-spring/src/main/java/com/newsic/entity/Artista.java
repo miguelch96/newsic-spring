@@ -10,7 +10,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -38,30 +37,22 @@ public class Artista {
 
 	private String rutaimgperfil;
 
-	private String rutaimgportada;
-	
+
 	@NotEmpty
-	@Size(min = 4, max = 20, message = "El email debe tener entre 4 y 20 caracteres")
+	@Size(min = 4,  message = "El email debe tener entre 4 y 20 caracteres")
 	private String email;
-	
+
 	@NotEmpty
 	@Size(min = 4, max = 20, message = "El password debe tener entre 4 y 20 caracteres")
 	private String passwd;
-	
-	//Numero de canciones
-	//@Query(value ="SELECT COUNT(*) from cancion as c join album as a on c.albumid=a.albumid join artista as x on x.artistaid=a.artistaid where x.artistaid=2;")
-
-
 
 
 	public Artista() {
 
 	}
-	
-	
 
 	public Artista(Long artistaid, String nombre, String apellido, Date fechanacimiento, String nombreartistico,
-			String rutaimgperfil, String rutaimgportada, String email, String passwd) {
+			String rutaimgperfil,  String email, String passwd) {
 		super();
 		this.artistaid = artistaid;
 		this.nombre = nombre;
@@ -69,12 +60,9 @@ public class Artista {
 		this.fechanacimiento = fechanacimiento;
 		this.nombreartistico = nombreartistico;
 		this.rutaimgperfil = rutaimgperfil;
-		this.rutaimgportada = rutaimgportada;
 		this.email = email;
 		this.passwd = passwd;
 	}
-
-
 
 	public Long getArtistaid() {
 		return artistaid;
@@ -124,13 +112,6 @@ public class Artista {
 		this.rutaimgperfil = rutaimgperfil;
 	}
 
-	public String getRutaimgportada() {
-		return rutaimgportada;
-	}
-
-	public void setRutaimgportada(String rutaimgportada) {
-		this.rutaimgportada = rutaimgportada;
-	}
 
 	public String getEmail() {
 		return email;
@@ -147,11 +128,5 @@ public class Artista {
 	public void setPasswd(String passwd) {
 		this.passwd = passwd;
 	}
-	
-	
-
-
-	
-	
 
 }

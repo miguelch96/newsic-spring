@@ -21,6 +21,7 @@ public class CancionService implements ICancionService {
 
 	@Override
 	public void save(Cancion cancion) {
+		cancion.setReproducciones(0);
 		cancionRepository.save(cancion);
 	}
 
@@ -58,6 +59,11 @@ public class CancionService implements ICancionService {
 	@Override
 	public Iterable<Cancion> findByArtista(Long artistaid) {
 		return cancionRepository.findByArtista(artistaid);
+	}
+
+	@Override
+	public Iterable<Cancion> MejoresCancionesDelArtista(Long artistaid) {
+		return cancionRepository.MejoresCancionesDelArtista(artistaid);
 	}
 
 
