@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8" />
+<title th:text="${album.nombre}"></title>
+<link rel="apple-touch-icon" href="../images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
+<link rel="stylesheet" href="/css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons.css" type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/material-design-icons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/app.min.css" type="text/css" />
+</head>
+<body class="pace-done black">
+	<div class="app dk" id="app">
+
+
+		<!-- PANEL IZQUIERDO -->
+		<div th:replace="fragment/panelizquierdo"></div>
+
+		<div id="content" class="app-content white bg box-shadow-z2"
+			role="main">
+			<div class="app-header hidden-lg-up white lt box-shadow-z1">
+				<div class="navbar">
+					<a href="index-2.html" class="navbar-brand md"><img
+						src="../images/logo.png" alt="." class="hide" /> <span
+						class="hidden-folded inline">pulse</span></a>
+					<ul class="nav navbar-nav pull-right">
+						<li class="nav-item"><a data-toggle="modal"
+							data-target="#aside" class="nav-link"><i
+								class="material-icons">menu</i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- REPRODUCTOR -->
+			<div th:replace="fragment/reproductor"></div>
+
+			<div class="app-body" id="view">
+				<div class="pos-rlt">
+					<div class="page-bg" data-stellar-ratio="2"
+						th:style="'background-image: url(' + ${album.rutaimgalbum}   +');'"></div>
+				</div>
+				<div class="page-content">
+					<div class="padding b-b">
+						<div class="row-col">
+							<div class="col-sm w w-auto-xs m-b">
+								<div class="item w r">
+									<div class="item-media">
+										<div class="item-media-content"
+											th:style="'background-image: url(' + ${album.rutaimgalbum}   +');'"></div>
+									</div>
+								</div>
+							</div>
+
+							<!-- DETALLES DEL ALBUM -->
+							<div class="col-sm">
+								<div class="p-l-md no-padding-xs">
+									<div class="page-title">
+										<!-- NOMBRE DEL ALBUM -->
+										<h1 class="inline" th:text="${album.nombre}"></h1>
+									</div>
+									<p class="item-desc text-ellipsis text-muted"
+										data-ui-toggle-class="text-ellipsis">Lorem ipsum dolor sit
+										amet, consectetur adipiscing elit. Quamquam tu hanc
+										copiosiorem etiam soles dicere. Nihil illinc huc pervenit.
+										Verum hoc idem saepe faciamus. Quid ad utilitatem tantae
+										pecuniae? Utram tandem linguam nescio? Sed hoc sane
+										concedamus.</p>
+									<div class="item-action m-b">
+										<a class="btn btn-icon white rounded btn-share pull-right"
+											data-toggle="modal" data-target="#share-modal"><i
+											class="fa fa-share-alt"></i></a>
+										<button class="btn-playpause text-primary m-r-sm"></button>
+										<span class="text-muted">2356</span> <a
+											class="btn btn-icon rounded btn-favorite"><i
+											class="fa fa-heart-o"></i></a> <span class="text-muted">232</span>
+										<div class="inline dropdown m-l-xs">
+											<a class="btn btn-icon rounded btn-more"
+												data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+											<div class="dropdown-menu pull-right black lt"></div>
+										</div>
+									</div>
+									<div class="item-meta">
+										<a th:each="genero:${generosalbum}"
+											class="btn btn-xs rounded white" th:text="${genero.nombre}"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- LISTA DE CANCIONES DEL ALBUM -->
+					<div class="row-col">
+						<div class="col-lg-9 b-r no-border-md">
+							<div class="padding">
+								<h6 class="m-b">
+									<span class="text-muted">by</span> <a href="artist.detail.html"
+										data-pjax="data-pjax" class="item-author _600"
+										th:text="${album.artista.nombre + ' '+ album.artista.apellido}"></a>
+									<!-- NUMERO DE CANCIONES Y DURACION DEL ALBUM -->
+									<span class="text-muted text-sm"
+										th:text="'- '+${#lists.size(canciones)+ ' song, 50 min 32 sec'}"></span>
+								</h6>
+								<div id="tracks"
+									class="row item-list item-list-xs item-list-li m-b">
+									<!-- CANCIONES DEL ALBUM -->
+									<div class="col-xs-12" th:each="cancion:${canciones}">
+										<div class="item r" data-id="item-10"
+											th:attr="data-src=${cancion.rutacancion}">
+											<div class="item-media">
+												<a href="track.detail.html" class="item-media-content"
+													style="background-image: url('images/b9.jpg')"></a>
+												<div class="item-overlay center">
+													<button class="btn-playpause">Play</button>
+												</div>
+											</div>
+											<div class="item-info">
+												<div class="item-overlay bottom text-right">
+													<a href="#" class="btn-favorite"><i
+														class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+														data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+
+													<div class="dropdown-menu pull-right black lt">
+														<div class="dropdown-item dropdown-submenu">
+															<a tabindex="-1" href="#">Añadir a playlist</a>
+															<div class="dropdown-menu pull-left black lt" role="menu">
+																<a th:each="playlist:${playlists}" class="dropdown-item"
+																	th:href="${'/playlist/add/'+playlist.playlistid+'-'+cancion.cancionid}"
+																	th:text="${playlist.nombre+' '+playlist.artista.nombre+' '+playlist.artista.apellido}"></a>
+															</div>
+														</div>
+													</div>
+
+
+												</div>
+												<div class="item-title text-ellipsis">
+													<!-- NOMBRE CANCION -->
+													<a href="#" th:text="${cancion.nombre}">Nombre cancion</a>
+												</div>
+												<div class="item-author text-sm text-ellipsis hide">
+													<!-- ARTISTA DE LA CANCION -->
+													<a href="artist.detail.html" class="text-muted"
+														th:text="${cancion.album.artista.nombre + ' '+cancion.album.artista.apellido}">Postiljonen</a>
+												</div>
+												<div class="item-meta text-sm text-muted">
+													<span class="item-meta-right" th:text="${cancion.duracion}">minutos</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- NOMBRE DEL ARTISTA PARA OTROS ALBUMES -->
+								<h5 class="m-b"
+									th:text="'From ' +${album.artista.nombre+' '+album.artista.apellido}"></h5>
+								<div class="row m-b">
+									<div class="col-xs-6 col-sm-6 col-md-3"
+										th:each="album:${albumesdelartista}">
+										<div class="item r" data-id="item-2"
+											data-src="../audio/audiodefault.mp3">
+											<div class="item-media">
+												<a href="#" class="item-media-content"
+													th:style="'background-image: url(' + ${album.rutaimgalbum}   +');'"></a>
+												<div class="item-overlay center">
+													<button class="btn-playpause">Play</button>
+												</div>
+											</div>
+											<div class="item-info">
+												<div class="item-overlay bottom text-right">
+													<a href="#" class="btn-favorite"><i
+														class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+														data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+													<div class="dropdown-menu pull-right black lt"></div>
+												</div>
+												<div class="item-title text-ellipsis">
+													<center>
+														<a href="#" th:text="${album.nombre}">Nombre del album</a>
+													</center>
+												</div>
+												<div class="item-author text-sm text-ellipsis hide">
+													<center>
+														<a href="artist.detail.html" class="text-muted"
+															th:text="${album.artista.nombre}">Nombre del artista</a>
+													</center>
+												</div>
+												<div class="item-meta text-sm text-muted">
+													<center>
+														<span class="item-meta-stats text-xs"><i
+															class="fa fa-play text-muted"></i> 30 <i
+															class="fa fa-heart m-l-sm text-muted"></i> 10</span>
+													</center>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- COMENTARIOS -->
+								<!-- 
+								<h5 class="m-b">Comments</h5>
+								<div class="streamline m-b m-l">
+									<div class="sl-item">
+										<div class="sl-left">
+											<img src="../images/a0.jpg" alt="." class="img-circle" />
+										</div>
+										<div class="sl-content">
+											<div class="sl-author m-b-0">
+												<a href="#">Peter Joo</a> <span class="sl-date text-muted">2
+													minutes ago</span>
+											</div>
+											<div>
+												<p>Check your Internet connection</p>
+											</div>
+											<div class="sl-footer">
+												<a href="#" data-toggle="collapse" data-target="#reply-1"><i
+													class="fa fa-fw fa-mail-reply text-muted"></i> Reply</a>
+											</div>
+											<div class="box collapse m-a-0 b-a" id="reply-1">
+												<form>
+													<textarea class="form-control no-border" rows="3"
+														placeholder="Type something..."></textarea>
+												</form>
+												<div class="box-footer clearfix">
+													<button class="btn btn-info pull-right btn-sm">Post</button>
+													<ul class="nav nav-pills nav-sm">
+														<li class="nav-item"><a class="nav-link" href="#"><i
+																class="fa fa-camera text-muted"></i></a></li>
+														<li class="nav-item"><a class="nav-link" href="#"><i
+																class="fa fa-video-camera text-muted"></i></a></li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="sl-item">
+										<div class="sl-left">
+											<img src="../images/a2.jpg" alt="." class="img-circle" />
+										</div>
+										<div class="sl-content">
+											<div class="sl-author m-b-0">
+												<a href="#">Moke</a> <span class="sl-date text-muted">8:30</span>
+											</div>
+											<div>
+												<p>
+													Call to customer <a href="#" class="text-primary">Jacob</a>
+													and discuss the detail.
+												</p>
+											</div>
+										</div>
+									</div>
+									<div class="sl-item">
+										<div class="sl-left">
+											<img src="../images/a3.jpg" alt="." class="img-circle" />
+										</div>
+										<div class="sl-content">
+											<div class="sl-author m-b-0">
+												<a href="#">Moke</a> <span class="sl-date text-muted">Sat,
+													5 Mar</span>
+											</div>
+											<blockquote>
+												<p>Lorem ipsum dolor sit amet, consectetur adipiscing
+													elit. Integer posuere erat a ante soe aiea ose dos soois.</p>
+												<small>Someone famous in <cite title="Source Title">Source
+														Title</cite></small>
+											</blockquote>
+											<div class="sl-item">
+												<div class="sl-left">
+													<img src="../images/a2.jpg" alt="." class="img-circle" />
+												</div>
+												<div class="sl-content">
+													<div class="sl-date text-muted">Sun, 11 Feb</div>
+													<p>
+														<a href="#" class="text-primary">Jessi</a> assign you a
+														task <a href="#" class="text-primary">Mockup Design</a>.
+													</p>
+												</div>
+											</div>
+											<div class="sl-item">
+												<div class="sl-left">
+													<img src="../images/a5.jpg" alt="." class="img-circle" />
+												</div>
+												<div class="sl-content">
+													<div class="sl-date text-muted">Thu, 17 Jan</div>
+													<p>Follow up to close deal</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<h5 class="m-t-lg m-b">Leave a comment</h5>
+								<form>
+									<div class="form-group row">
+										<div class="col-sm-6">
+											<label>Your name</label><input type="text"
+												class="form-control" placeholder="Name" />
+										</div>
+										<div class="col-sm-6">
+											<label>Email</label><input type="email" class="form-control"
+												placeholder="Enter email" />
+										</div>
+									</div>
+									<div class="form-group">
+										<label>Comment</label>
+										<textarea class="form-control" rows="5"
+											placeholder="Type your comment"></textarea>
+									</div>
+									<div class="form-group">
+										<button type="submit" class="btn btn-sm white rounded">Submit
+											comment</button>
+									</div>
+								</form> -->
+							</div>
+						</div>
+						<div class="col-lg-3 w-xxl w-auto-md">
+							<div class="padding" style="bottom: 60px"
+								data-ui-jp="stick_in_parent">
+								<h6 class="text text-muted">5 Likes</h6>
+								<div class="row item-list item-list-sm m-b">
+									<div class="col-xs-12">
+										<div class="item r" data-id="item-3"
+											data-src="../audio/audiodefault.mp3">
+											<div class="item-media">
+												<a href="track.detail.html" class="item-media-content"
+													style="background-image: url('../images/b2.jpg')"></a>
+											</div>
+											<div class="item-info">
+												<div class="item-title text-ellipsis">
+													<a href="track.detail.html">I Wanna Be In the Cavalry</a>
+												</div>
+												<div class="item-author text-sm text-ellipsis">
+													<a href="artist.detail.html" class="text-muted">Jeremy
+														Scott</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+								<h6 class="text text-muted">Go mobile</h6>
+								<div class="btn-groups">
+									<a href="#" class="btn btn-sm dark lt m-r-xs"
+										style="width: 135px"><span class="pull-left m-r-sm"><i
+											class="fa fa-apple fa-2x"></i></span> <span
+										class="clear text-left l-h-1x"><span
+											class="text-muted text-xxs">Download on the</span> <b
+											class="block m-b-xs">App Store</b></span></a> <a href="#"
+										class="btn btn-sm dark lt" style="width: 133px"><span
+										class="pull-left m-r-sm"><i class="fa fa-play fa-2x"></i></span>
+										<span class="clear text-left l-h-1x"><span
+											class="text-muted text-xxs">Get it on</span> <b
+											class="block m-b-xs m-r-xs">Google Play</b></span></a>
+								</div>
+								<div class="b-b m-y"></div>
+								<div class="nav text-sm _600">
+									<a href="#" class="nav-link text-muted m-r-xs">About</a> <a
+										href="#" class="nav-link text-muted m-r-xs">Contact</a> <a
+										href="#" class="nav-link text-muted m-r-xs">Legal</a> <a
+										href="#" class="nav-link text-muted m-r-xs">Policy</a>
+								</div>
+								<p class="text-muted text-xs p-b-lg">&copy; Copyright 2016</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="/js/app.min.js"></script>
+</body>
+</html>

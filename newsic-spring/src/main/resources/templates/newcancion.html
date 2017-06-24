@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>CREAR ALBUM</title>
+<link rel="apple-touch-icon" href="../images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
+<link rel="stylesheet" href="/css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons.css" type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/material-design-icons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/app.min.css" type="text/css" />
+</head>
+<body class="pace-done black">
+	<div class="app dk" id="app">
+
+		<!-- PANEL IZQUIERDO -->
+		<div th:replace="fragment/panelizquierdo"></div>
+
+		<div class="padding">
+			<div class="navbar">
+				<div class="pull-center">
+					<a href="index-2.html" class="navbar-brand md"><img
+						src="/images/logo.png" alt="." class="hide" /> <span
+						class="hidden-folded inline">Añadir cancion</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="b-t">
+			<div class="center-block w-xxl w-auto-xs p-y-md text-center">
+				<div class="p-a-md">
+					<form method="POST" th:action="@{/canciones/new}"
+						th:object="${cancion}" enctype="multipart/form-data"
+						style="margion: 20px 0">
+
+						<div class="form-group">
+							<input type="hidden" th:field="*{cancionid}" /> <input
+								type="text" class="form-control" id="nombre"
+								th:field="*{nombre}" placeholder="Nombre de la cancion" /> <span
+								th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">..</span>
+						</div>
+						<div class="form-group">
+							<p>Seleccionar uno de tus albumes:</p>
+							<select class="form-control" th:field="*{album.albumid}">
+								<option th:each="album:${misalbumes}"
+									th:value="${album.albumid}"
+									th:text="${album.nombre}"></option>
+							</select>
+						</div>
+						<div class="form-group">
+							<p>Seleccionar genero:</p>
+							<select class="form-control" th:field="*{genero.generoid}">
+								<option th:each="genero:${generos}"
+									th:value="${genero.generoid}" th:text="${genero.nombre}"></option>
+							</select>
+						</div>
+						<div class="form-group">
+							<p>Adjunta el archivo:</p>
+							<input type="file" name="archivocancion" required="required" />
+						</div>
+						<div style="padding-top: 30px;">
+							<button class="btn btn-lg black p-x-lg" type="submit">Guardar
+								album</button>
+						</div>
+						<br /> <span th:text="${message != null} ? ${message} : ' '"></span>
+					</form>
+					<div class="p-y-lg text-center" style="padding-top: 0px;">
+						<div>
+							<a th:href="@{/artistas}" class="text-primary _600">Cancelar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/js/app.min.js"></script>
+</body>
+</html>
