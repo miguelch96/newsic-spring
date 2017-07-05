@@ -24,12 +24,6 @@ public class LoginController {
 	@Autowired
 	private UsuarioRepository userRepository;
 	
-	@GetMapping
-	public String index(Model model)
-	{
-		return "index";
-	}
-
 	@GetMapping("/login")
 	public String login(Model model, 
 			@RequestParam(name="error", required=false) String error, 

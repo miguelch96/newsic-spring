@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8" />
+<title th:text="${artista.nombre + ' ' + artista.apellido}"></title>
+<link rel="apple-touch-icon" href="../images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
+<link rel="stylesheet" href="/css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons.css" type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/material-design-icons.css" type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/app.min.css" type="text/css" />
+
+</head>
+<body class="pace-done black">
+	<div class="app dk" id="app">
+
+		<!-- PANEL IZQUIERDO -->
+		<div th:replace="fragment/panelizquierdo"></div>
+
+		<!-- CONTENIDO -->
+		<div id="content" class="app-content white bg box-shadow-z2"
+			role="main">
+
+			<div class="app-footer app-player grey bg">
+				<div class="playlist" style="width: 100%"></div>
+			</div>
+			<div class="app-body" id="view">
+				<div class="pos-rlt">
+					<div class="page-bg" data-stellar-ratio="2"
+						th:style="'background-image: url(' + ${artista.rutaimgperfil}   +');'"></div>
+				</div>
+				<div class="page-content">
+					<div class="padding b-b">
+						<div class="row-col">
+							<div class="col-sm w w-auto-xs m-b">
+								<div class="item w rounded">
+									<div class="item-media">
+										<div class="item-media-content"
+											th:style="'background-image: url(' + ${artista.rutaimgperfil}   +');'"></div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm">
+								<div class="p-l-md no-padding-xs">
+									<!-- TITULO  -->
+									<div class="page-title">
+										<h1 class="inline"
+											th:text="${artista.nombre + ' '+ artista.apellido}"></h1>
+										<label class="fa fa-star text-primary text-lg m-b v-m m-l-xs"
+											title="Pro"></label>
+									</div>
+									<p class="item-desc text-ellipsis text-muted"
+										data-ui-toggle-class="text-ellipsis">Lorem ipsum dolor sit
+										amet, consectetur adipiscing elit. Quamquam tu hanc
+										copiosiorem etiam soles dicere. Nihil illinc huc pervenit.
+										Verum hoc idem saepe faciamus. Quid ad utilitatem tantae
+										pecuniae? Utram tandem linguam nescio? Sed hoc sane
+										concedamus.</p>
+									<div class="item-action m-b">
+										<a class="btn btn-icon white rounded btn-share pull-right"
+											data-toggle="modal" data-target="#share-modal"><i
+											class="fa fa-share-alt"></i></a>
+										<button class="btn-playpause text-primary m-r-sm"></button>
+										<span th:text="' '+${#lists.size(albumes)+ ' Albums, '}+${#lists.size(canciones)+ ' Canciones'}">#albumes,#canciones</span>
+									</div>
+									<!-- GENEROS DEL ARTISTA -->
+									<div class="block clearfix m-b" >
+										<a th:each="genero:${generosartista}" class="btn btn-xs rounded white" th:text="${genero.nombre}"></a> 				
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row-col">
+						<div class="col-lg-9 b-r no-border-md">
+							<div class="padding">
+								<div class="nav-active-border b-primary bottom m-b-md">
+									<ul class="nav l-h-2x">
+										<!-- CONFIGURACION TABS -->
+										<li class="nav-item m-r inline"><a
+											class="nav-link active" href="#" data-toggle="tab"
+											data-target="#tab_1">Destacados</a></li>
+										<li class="nav-item m-r inline"><a class="nav-link"
+											href="#" data-toggle="tab" data-target="#tab_2">Canciones</a></li>
+										<li class="nav-item m-r inline"><a class="nav-link"
+											href="#" data-toggle="tab" data-target="#tab_3">Albumes</a></li>
+										<li class="nav-item m-r inline"><a class="nav-link"
+											href="#" data-toggle="tab" data-target="#tab_4">Redes sociales</a></li>
+									</ul>
+								</div>
+								<div class="tab-content">
+
+									<!-- OVERVIEW-  LOS MAS POPULAR -->
+									<div class="tab-pane active" id="tab_1">
+
+										<!-- TAP POPULAR - CANCIONES POPULARES -->
+										<h5 class="m-b">Sus mejores canciones</h5>
+										<div class="row item-list item-list-md item-list-li m-b"
+											id="tracks">
+											<!-- CANCION POPULAR -->
+											<div class="col-md-12 col-lg-6" th:each="cancion:${mejorescanciones}">
+												<div class="item r" data-id="item-3"
+													th:attr="data-src=${cancion.rutacancion}">
+													<div class="item-media">
+														<a href="#" class="item-media-content"
+															th:style="'background-image: url(' + ${cancion.album.rutaimgalbum}   +');'"></a>
+														<div class="item-overlay center">
+															<button class="btn-playpause">Play</button>
+														</div>
+													</div>
+													<div class="item-info">
+														<div class="item-overlay bottom text-right">
+															<a href="#" class="btn-favorite"><i
+																class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+																data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+															<div class="dropdown-menu pull-right black lt"></div>
+														</div>
+														<div class="item-title text-ellipsis">
+															<a href="#" th:text="${cancion.nombre}">Nombre cancion</a>
+														</div>
+														<div class="item-author text-sm text-ellipsis hide">
+															<a href="#" class="text-muted"> nombre artista</a>
+														</div>
+														<div class="item-meta text-sm text-muted">
+															<span class="item-meta-stats text-xs">
+															<i class="fa fa-play text-muted"></i>  <span th:text="${cancion.reproducciones}"></span>
+															<i class="fa fa-heart m-l-sm text-muted"></i> 10</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!--TAP POPULAR- ALBUMES POPULARES -->
+										<h5 class="m-b">Sus mejores albumes</h5>
+										<!-- LISTA ALBUMES POPULARES -->
+										<div class="row m-b">
+											<!-- ALBUM -->
+											<div class="col-xs-4 col-sm-4 col-md-3"
+												th:each="album:${mejoresalbumes}">
+												<div class="item r" data-id="item-10"
+													data-src="../audio/audiodefault.mp3">
+													<div class="item-media">
+														<a th:href="${'/albumes/' + album.albumid}"
+															class="item-media-content"
+															th:style="'background-image: url(' + ${album.rutaimgalbum}   +');'"></a>
+														<div class="item-overlay center">
+															<button class="btn-playpause">Play</button>
+														</div>
+													</div>
+													<div class="item-info">
+														<div class="item-overlay bottom text-right">
+															<a href="#" class="btn-favorite"><i
+																class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+																data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+															<div class="dropdown-menu pull-right black lt"></div>
+														</div>
+														<div class="item-title text-ellipsis">
+															<a href="#" th:text="${album.nombre}"></a>
+														</div>
+
+														<div class="item-author text-sm text-ellipsis hide">
+															<a href="#" class="text-muted"
+																th:text="${album.artista.nombre}"> </a>
+														</div>
+														<div class="item-meta text-sm text-muted">
+															<span class="item-meta-stats text-xs"> <!-- REPRODUCCIONES -->
+																<i class="fa fa-play text-muted"></i> <span th:text="${album.reproducciones}"></span>
+																<!-- FAVORITOS -->
+																<i class="fa fa-heart m-l-sm text-muted"></i> 240
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+										</div>
+										<a href="#" class="btn btn-sm white rounded">Show More</a>
+									</div>
+
+									<!-- TAB CANCIONES -->
+									<div class="tab-pane" id="tab_2">
+										<div class="row m-b">
+											<!-- CANCION -->
+											<div class="col-xs-4 col-sm-4 col-md-3"
+												th:each="cancion:${canciones}">
+												<div class="item r" data-id="item-3"
+													th:attr="data-src=${cancion.rutacancion}">
+													<div class="item-media">
+														<a href="#" class="item-media-content"
+															th:style="'background-image: url(' + ${cancion.album.rutaimgalbum}   +');'">
+														</a>
+														<div class="item-overlay center">
+															<button class="btn-playpause">Play</button>
+														</div>
+													</div>
+													<div class="item-info">
+														<div class="item-overlay bottom text-right">
+															<a href="#" class="btn-favorite"><i
+																class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+																data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+															<div class="dropdown-menu pull-right black lt"></div>
+														</div>
+														<div class="item-title text-ellipsis">
+															<!-- NOMBRE CANCION -->
+															<a href="#" th:text="${cancion.nombre}"></a>
+														</div>
+														<div class="item-author text-sm text-ellipsis hide">
+															<!-- AUTOR CANCION -->
+															<a href="#" class="text-muted"
+																th:text="${artista.nombre}"></a>
+														</div>
+														<div class="item-meta text-sm text-muted">
+
+															<span class="item-meta-stats text-xs"> <!-- REPRODUCCIONES -->
+																<i class="fa fa-play text-muted"
+																th:text="${cancion.reproducciones}"></i> <!-- FAVORITOS -->
+																<i class="fa fa-heart m-l-sm text-muted"></i> 10
+															</span>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+										<a href="#" class="btn btn-sm white rounded">Show More</a>
+									</div>
+
+									<!-- TAB ALBUMES -->
+									<div class="tab-pane" id="tab_3">
+										<div class="row m-b">
+											<div class="col-xs-4 col-sm-4 col-md-3" th:each="album:${albumes}">
+												<div class="item r" data-id="item-1"
+													data-src="/audio/audiodefault.mp3">
+													<div class="item-media">
+														<a th:href="${'/albumes/'+album.albumid}" class="item-media-content"
+															th:style="'background-image: url(' + ${album.rutaimgalbum}   +');'"></a>
+														<div class="item-overlay center">
+															<button class="btn-playpause">Play</button>
+														</div>
+													</div>
+													<div class="item-info">
+														<div class="item-overlay bottom text-right">
+															<a href="#" class="btn-favorite"><i
+																class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+																data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+															<div class="dropdown-menu pull-right black lt"></div>
+														</div>
+														<div class="item-title text-ellipsis">
+															<a href="#" th:text="${album.nombre}">Nombre album</a>
+														</div>
+														<div class="item-author text-sm text-ellipsis hide">
+															<a href="#" class="text-muted">Summerella</a>
+														</div>
+														<div class="item-meta text-sm text-muted">
+															<span class="item-meta-stats text-xs"><i
+																class="fa fa-play text-muted"></i> 3200 <i
+																class="fa fa-heart m-l-sm text-muted"></i> 210</span>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<!-- TAB PROFILE - ACA METER REDES SOCIALES -->
+									<div class="tab-pane" id="tab_4">
+										<div class="row-col m-b">
+											<div class="col-xs w-xs text-muted">Location</div>
+											<div class="col-xs">UK</div>
+										</div>
+										<div class="row-col m-b">
+											<div class="col-xs w-xs text-muted">Website</div>
+											<div class="col-xs">
+												<a href="http://rachel-platten.com/" th:text="${'http://'+artista.nombre+'-'+artista.apellido+'.com'}">http://rachel-platten.com</a>
+											</div>
+										</div>
+										<div class="row-col m-b">
+											<div class="col-xs w-xs text-muted"></div>
+											<div class="col-xs">
+												<a href="#"
+													class="btn btn-icon btn-social rounded white btn-sm"><i
+													class="fa fa-facebook"></i> <i
+													class="fa fa-facebook indigo"></i></a> <a href="#"
+													class="btn btn-icon btn-social rounded white btn-sm"><i
+													class="fa fa-twitter"></i> <i
+													class="fa fa-twitter light-blue"></i></a> <a href="#"
+													class="btn btn-icon btn-social rounded white btn-sm"><i
+													class="fa fa-google-plus"></i> <i
+													class="fa fa-google-plus red"></i></a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<!-- PANEL DERECHO -->
+						<div class="col-lg-3 w-xxl w-auto-md">
+							<div class="padding" style="bottom: 60px"
+								data-ui-jp="stick_in_parent">
+								<h6 class="text text-muted">5 Likes</h6>
+
+								<!-- PANEL DERECHO LIKES-->
+								<div class="row item-list item-list-sm m-b">
+									<div class="col-xs-12">
+										<div class="item r" data-id="item-10"
+											data-src="../audio/audiodefault.mp3">
+											<div class="item-media">
+												<a href="#" class="item-media-content"
+													style="background-image: url('../images/b9.jpg')"></a>
+											</div>
+											<div class="item-info">
+												<div class="item-title text-ellipsis">
+													<a href="#">The Open Road</a>
+												</div>
+												<div class="item-author text-sm text-ellipsis">
+													<a href="#" class="text-muted">Postiljonen</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+								</div>
+
+								<!-- PANEL DERECHO GO MOBILE-->
+								<h6 class="text text-muted">Go mobile</h6>
+								<div class="btn-groups">
+									<a href="#" class="btn btn-sm dark lt m-r-xs"
+										style="width: 135px"><span class="pull-left m-r-sm"><i
+											class="fa fa-apple fa-2x"></i></span> <span
+										class="clear text-left l-h-1x"><span
+											class="text-muted text-xxs">Download on the</span> <b
+											class="block m-b-xs">App Store</b></span></a> <a href="#"
+										class="btn btn-sm dark lt" style="width: 133px"><span
+										class="pull-left m-r-sm"><i class="fa fa-play fa-2x"></i></span>
+										<span class="clear text-left l-h-1x"><span
+											class="text-muted text-xxs">Get it on</span> <b
+											class="block m-b-xs m-r-xs">Google Play</b></span></a>
+								</div>
+
+								<!-- PANEL DERECHO  ABOL CONTACT LEGAL POLICY-->
+								<div class="b-b m-y"></div>
+								<div class="nav text-sm _600">
+									<a href="#" class="nav-link text-muted m-r-xs">About</a> <a
+										href="#" class="nav-link text-muted m-r-xs">Contact</a> <a
+										href="#" class="nav-link text-muted m-r-xs">Legal</a> <a
+										href="#" class="nav-link text-muted m-r-xs">Policy</a>
+								</div>
+								<p class="text-muted text-xs p-b-lg">&copy; Copyright 2016</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+	</div>
+
+	<script src="/js/app.min.js"></script>
+</body>
+</html>

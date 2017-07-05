@@ -59,12 +59,12 @@
 				<div class="dropdown-menu w dropdown-menu-scale">
 					<a class="dropdown-item" th:href="@{/artistas/profile}"><span>Profile</span></a>
 					<a class="dropdown-item" href="#"><span>Tracks</span></a>
-					<a class="dropdown-item" href="#"><span>Playlists</span></a>
+					<a class="dropdown-item" th:href="@{/playlist}"><span>Playlists</span></a>
 					<a class="dropdown-item" href="#"><span>Likes</span></a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" th:href="@{/canciones/new}"><span>Add Song</span></a>
 						<a class="dropdown-item" th:href="@{/albumes/new}"><span>Add Album</span></a>
-						<a class="dropdown-item" href="#"><span>Add Playlist</span></a>
+						<a class="dropdown-item" th:href="@{/playlist/new}"><span>Add Playlist</span></a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">Need help?</a> 
 					<form th:action="@{/logout}" method="post">

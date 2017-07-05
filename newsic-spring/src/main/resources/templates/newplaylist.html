@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8" />
+<title>CREAR ALBUM</title>
+<link rel="apple-touch-icon" href="../images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
+<link rel="stylesheet" href="/css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons.css" type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/material-design-icons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/app.min.css" type="text/css" />
 </head>
-<body>
+<body class="pace-done black">
+	<div class="app dk" id="app">
 
+		<!-- PANEL IZQUIERDO -->
+		<div th:replace="fragment/panelizquierdo"></div>
+		
+		
+		<div class="padding">
+			<div class="navbar">
+				<div class="pull-center">
+					<a href="index-2.html" class="navbar-brand md"><img
+						src="/images/logo.png" alt="." class="hide" /> <span
+						class="hidden-folded inline">Crear playlist</span></a>
+				</div>
+			</div>
+		</div>
+		<div class="b-t">
+			<div class="center-block w-xxl w-auto-xs p-y-md text-center">
+				<div class="p-a-md">
+					<form method="POST" th:action="@{/playlist/new}"
+						th:object="${playlist}"
+						style="margion: 20px 0">
+						
+						<input type="hidden" th:field="*{playlistid}" />
+						
+						<div class="form-group">
+							<input type="text" class="form-control" id="nombre"
+								th:field="*{nombre}" placeholder="Nombre de la playlist" /> 
+								<span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">..</span>
+						</div>
+						
+						<div class="form-group">
+							<input type="text" class="form-control" id="descripcion"
+								th:field="*{descripcion}" placeholder="Descripcion" /> 	
+						</div>
+						
+						<div class="form-group">
+							<p>Seleccionar fecha de creacion:</p>
+							<input type="date" class="form-control" min="2014-12-31"
+								max="2017-7-7" th:field="*{fechacreacion}"
+								id="fechacreacion" />
+						</div>
+
+						<div style="padding-top: 30px;">
+							<button class="btn btn-lg black p-x-lg" type="submit">Guardar
+								playlist</button>
+						</div>
+						<br /> <span th:text="${message != null} ? ${message} : ' '"></span>
+
+					</form>
+					<div class="p-y-lg text-center" style="padding-top: 0px;">
+						<div>
+							<a th:href="@{/artistas}" class="text-primary _600">Cancelar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="/js/app.min.js"></script>
 </body>
 </html>

@@ -8,7 +8,8 @@
 <link rel="stylesheet" href="/css/animate.min.css" type="text/css" />
 <link rel="stylesheet" href="/css/glyphicons.css" type="text/css" />
 <link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
-<link rel="stylesheet" href="/css/material-design-icons.css" type="text/css" />
+<link rel="stylesheet" href="/css/material-design-icons.css"
+	type="text/css" />
 <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="/css/app.min.css" type="text/css" />
 
@@ -32,11 +33,11 @@
 					</ul>
 				</div>
 			</div>
-			
-			
+
+
 			<!-- REPRODUCTOR -->
 			<div th:replace="fragment/reproductor"></div>
-			
+
 			<div class="app-body" id="view">
 				<div class="page-content">
 					<div class="row-col">
@@ -103,13 +104,16 @@
 														<div class="dropdown-menu pull-right black lt"></div>
 													</div>
 													<div class="item-title text-ellipsis">
-													<center>
-														<a href="#" th:text="${playlist.nombre}">nomber playlist</a></center>
+														<center>
+															<a href="#" th:text="${playlist.nombre}">nomber
+																playlist</a>
+														</center>
 													</div>
 													<div class="item-author text-sm text-ellipsis">
-													<center>
-														<a href="#" class="text-muted" th:text="${#lists.size(playlist.lstcanciones)+' Canciones'}">#Canciones</a>
-													</center>
+														<center>
+															<a href="#" class="text-muted"
+																th:text="${#lists.size(playlist.lstcanciones)+' Canciones'}">#Canciones</a>
+														</center>
 													</div>
 												</div>
 											</div>
@@ -125,7 +129,7 @@
 							</div>
 						</div>
 
-
+						<!-- 
 						<div class="col-lg-3 w-xxl w-auto-md">
 							<div class="padding" style="bottom: 60px"
 								data-ui-jp="stick_in_parent">
@@ -154,7 +158,7 @@
 
 
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

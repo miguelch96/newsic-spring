@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Albumes</title>
+<link rel="apple-touch-icon" href="../images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
+<link rel="stylesheet" href="/css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons.css" type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/material-design-icons.css" type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/app.min.css" type="text/css" />
+
+</head>
+<body class="pace-done black">
+	<div class="app dk" id="app">
+
+		<!-- PANEL IZQUIERDO -->
+		<div th:replace="fragment/panelizquierdo"></div>
+
+		<div id="content" class="app-content white bg box-shadow-z2"
+			role="main">
+			<div class="app-header hidden-lg-up white lt box-shadow-z1">
+				<div class="navbar">
+					<a href="#" class="navbar-brand md"> <img src="images/logo.png"
+						alt="." class="hide" /> <span class="hidden-folded inline">pulse</span></a>
+					<ul class="nav navbar-nav pull-right">
+						<li class="nav-item"><a data-toggle="modal"
+							data-target="#aside" class="nav-link"><i
+								class="material-icons">menu</i></a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="app-footer app-player grey bg">
+				<div class="playlist" style="width: 100%"></div>
+			</div>
+			<div class="app-body" id="view">
+				<div class="page-content">
+					<div class="row-col">
+						<div class="col-lg-9 b-r no-border-md">
+							<div class="padding">
+								<div class="page-title m-b">
+									<h1 class="inline m-a-0">Tus playlist</h1>
+									<div class="dropdown inline">
+										<button
+											class="btn btn-sm no-bg h4 m-y-0 v-b dropdown-toggle text-primary"
+											data-toggle="dropdown">All</button>
+
+
+										<div class="dropdown-menu">
+											<a th:href="@{'/playlist/genero/0'}" class="dropdown-item">Todos</a>
+											<a th:each="genero:${generos}"
+												th:href="${'/playlist/genero/'+ genero.generoid}"
+												class="dropdown-item" th:text="${genero.nombre}"></a>
+										</div>
+
+
+									</div>
+
+
+									<div class="input-group input-group-lg">
+										<form th:action="@{/playlist/buscarpornombre}">
+											<input style="width: 650px;" type="text" name="filtro"
+												class="form-control active"
+												placeholder="Busca tus playlists"
+												data-ui-toggle-class="hide" data-ui-target="#search-result" />
+											<span class="input-group-btn"><button
+													class="btn b-a no-shadow white" type="submit">Search</button></span>
+										</form>
+									</div>
+
+
+
+								</div>
+								<div data-ui-jp="jscroll" class="jscroll-loading-center"
+									data-ui-options="{
+            autoTrigger: true,
+            
+            padding: 50,
+            nextSelector: 'a.jscroll-next:last'
+          }">
+									<div class="row">
+										<div class="col-xs-4 col-sm-4 col-md-3"
+											th:each="playlist:${playlists}">
+											<div class="item r" data-id="item-5"
+												data-src="/audio/audiodefault.mp3">
+												<div class="item-media">
+													<a th:href="${'/playlist/' + playlist.playlistid}"
+														class="item-media-content"
+														style="background-image: url('/images/playlistdefault.jpg')"></a>
+													<div class="item-overlay center">
+														<button class="btn-playpause">Play</button>
+													</div>
+												</div>
+												<div class="item-info">
+													<div class="item-overlay bottom text-right">
+														<a href="#" class="btn-favorite"><i
+															class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+															data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+														<div class="dropdown-menu pull-right black lt"></div>
+													</div>
+													<div class="item-title text-ellipsis">
+														<a href="#" th:text="${playlist.nombre}">2 Canciones</a>
+													</div>
+													<div class="item-author text-sm text-ellipsis">
+														<a href="#" class="text-muted">2 Canciones</a>
+													</div>
+												</div>
+											</div>
+										</div>
+
+
+									</div>
+									<div class="text-center">
+										<a href="scroll.item.html"
+											class="btn btn-sm white rounded jscroll-next">Show More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-lg-3 w-xxl w-auto-md">
+							<div class="padding" style="bottom: 60px"
+								data-ui-jp="stick_in_parent">
+								<h6 class="text text-muted">Top 5 del Genero</h6>
+								<div class="row item-list item-list-sm m-b">
+									<div class="col-xs-12">
+										<div class="item r" data-id="item-9"
+											data-src="/audio/audiodefault.mp3">
+											<div class="item-media">
+												<a href="track.detail.html" class="item-media-content"
+													style="background-image: url('images/b8.jpg')"></a>
+											</div>
+											<div class="item-info">
+												<div class="item-title text-ellipsis">
+													<a href="track.detail.html">All I Need</a>
+												</div>
+												<div class="item-author text-sm text-ellipsis">
+													<a href="artist.detail.html" class="text-muted">Pablo
+														Nouvelle</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<script src="/js/app.min.js"></script>
+</body>
+</html>

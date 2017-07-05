@@ -129,10 +129,12 @@
 															<div class="dropdown-menu pull-left black lt" role="menu">
 																<a th:each="playlist:${playlists}" class="dropdown-item"
 																	th:href="${'/playlist/add/'+playlist.playlistid+'-'+cancion.cancionid}"
-																	th:text="${playlist.nombre+' '+playlist.artista.nombre+' '+playlist.artista.apellido}"></a>
+																	th:text="${playlist.nombre}"></a>
 															</div>
 														</div>
 													</div>
+
+
 
 
 												</div>

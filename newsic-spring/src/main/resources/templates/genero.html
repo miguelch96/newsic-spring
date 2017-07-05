@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="utf-8">
+<title>pulse - Music, Audio and Radio web application</title>
+<link rel="apple-touch-icon" href="../images/logo.png" />
+<link rel="shortcut icon" sizes="196x196" href="../images/logo.png" />
+<link rel="stylesheet" href="/css/animate.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/glyphicons.css" type="text/css" />
+<link rel="stylesheet" href="/css/font-awesome.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/material-design-icons.css"
+	type="text/css" />
+<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+<link rel="stylesheet" href="/css/app.min.css" type="text/css" />
+</head>
+<body>
+	<div class="app dk" id="app">
+
+		<!-- PANEL IZQUIERDO -->
+		<div th:replace="fragment/panelizquierdo"></div>
+
+		<div id="content" class="app-content white bg box-shadow-z2"
+			role="main">
+
+			<!-- REPRODUCTOR -->
+			<div th:replace="fragment/reproductor"></div>
+
+
+
+			<div class="app-body" id="view">
+				<div class="page-content">
+					<div class="padding p-b-0">
+						<div class="page-title m-b">
+							<h1 class="inline m-a-0">Los mejores artistas del genero</h1>
+						</div>
+						<div class="row row-sm item-masonry item-info-overlay">
+							<div class="col-sm-6 text-white m-b-sm">
+								<div
+									class="owl-carousel owl-theme owl-dots-sm owl-dots-bottom-left"
+									data-ui-jp="owlCarousel"
+									data-ui-options="{
+		                     items: 1
+		                    ,loop: true
+		                    ,autoplay: true
+		                    ,nav: true
+		                    ,animateOut:&#x27;fadeOut&#x27;
+		                  }">
+									<div class="item r" data-id="item-115"
+										data-src="audio/audiodefault.mp3">
+										<div class="item-media primary">
+											<a href="#" class="item-media-content"
+												style="background-image: url('images/c1.jpg')"></a>
+
+										</div>
+										<div class="item-info">
+											<div class="item-overlay bottom text-right">
+												<a href="#" class="btn-favorite"><i
+													class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+													data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+												<div class="dropdown-menu pull-right black lt"></div>
+											</div>
+											<div class="item-title text-ellipsis">
+												<a href="track.detail.html">New Album from Nouvelle</a>
+											</div>
+											<div class="item-author text-sm text-ellipsis">
+												<a href="artist.detail.html" class="text-muted">Nouvelle</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-3 col-xs-6">
+								<div class="item r" data-id="item-1"
+									data-src="http://api.soundcloud.com/tracks/269944843/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+									<div class="item-media">
+										<a href="track.detail.html" class="item-media-content"
+											style="background-image: url('images/b0.jpg')"></a>
+										<div class="item-overlay center">
+											<button class="btn-playpause">Play</button>
+										</div>
+									</div>
+									<div class="item-info">
+										<div class="item-overlay bottom text-right">
+											<a href="#" class="btn-favorite"><i class="fa fa-heart-o"></i></a>
+											<a href="#" class="btn-more" data-toggle="dropdown"><i
+												class="fa fa-ellipsis-h"></i></a>
+											<div class="dropdown-menu pull-right black lt"></div>
+										</div>
+										<div class="item-title text-ellipsis">
+											<a href="track.detail.html">Pull Up</a>
+										</div>
+										<div class="item-author text-sm text-ellipsis">
+											<a href="artist.detail.html" class="text-muted">Summerella</a>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div class="row-col">
+						<div class="col-lg-9 b-r no-border-md">
+							<div class="padding">
+								<h2 class="widget-title h4 m-b">Las cancioens mas reproducidas</h2>
+								<div class="owl-carousel owl-theme owl-dots-center"
+									data-ui-jp="owlCarousel"
+									data-ui-options="{
+					margin: 20,
+					responsiveClass:true,
+				    responsive:{
+				    	0:{
+				    		items: 2
+				    	},
+				        543:{
+				            items: 3
+				        }
+				    }
+				}">
+									<div class="">
+										<div class="item r" data-id="item-2"
+											data-src="http://api.soundcloud.com/tracks/259445397/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+											<div class="item-media item-media-4by3">
+												<a href="track.detail.html" class="item-media-content"
+													style="background-image: url('images/b1.jpg')"></a>
+												<div class="item-overlay center">
+													<button class="btn-playpause">Play</button>
+												</div>
+											</div>
+											<div class="item-info">
+												<div class="item-overlay bottom text-right">
+													<a href="#" class="btn-favorite"><i
+														class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+														data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+													<div class="dropdown-menu pull-right black lt"></div>
+												</div>
+												<div class="item-title text-ellipsis">
+													<a href="track.detail.html">Fireworks</a>
+												</div>
+												<div class="item-author text-sm text-ellipsis">
+													<a href="artist.detail.html" class="text-muted">Kygo</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<h2 class="widget-title h4 m-b">New</h2>
+								<div class="row">
+								<!-- LOS ALBUMES MAS RECIENTES -->
+									<div class="col-xs-4 col-sm-4 col-md-3">
+										<div class="item r" data-id="item-3"
+											data-src="http://api.soundcloud.com/tracks/79031167/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+											<div class="item-media">
+												<a href="track.detail.html" class="item-media-content"
+													style="background-image: url('images/b2.jpg')"></a>
+												<div class="item-overlay center">
+													<button class="btn-playpause">Play</button>
+												</div>
+											</div>
+											<div class="item-info">
+												<div class="item-overlay bottom text-right">
+													<a href="#" class="btn-favorite"><i
+														class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+														data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+													<div class="dropdown-menu pull-right black lt"></div>
+												</div>
+												<div class="item-title text-ellipsis">
+													<a href="track.detail.html">I Wanna Be In the Cavalry</a>
+												</div>
+												<div class="item-author text-sm text-ellipsis">
+													<a href="artist.detail.html" class="text-muted">Jeremy
+														Scott</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+								<h2 class="widget-title h4 m-b">Top 10 Canciones del Genero</h2>
+								<div class="row item-list item-list-md m-b">
+								
+								<!-- LAS MEJORES CANCIONES -->
+									<div class="col-sm-6">
+										<div class="item r" data-id="item-3"
+											data-src="http://api.soundcloud.com/tracks/79031167/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">
+											<div class="item-media">
+												<a href="track.detail.html" class="item-media-content"
+													style="background-image: url('images/b2.jpg')"></a>
+												<div class="item-overlay center">
+													<button class="btn-playpause">Play</button>
+												</div>
+											</div>
+											<div class="item-info">
+												<div class="item-overlay bottom text-right">
+													<a href="#" class="btn-favorite"><i
+														class="fa fa-heart-o"></i></a> <a href="#" class="btn-more"
+														data-toggle="dropdown"><i class="fa fa-ellipsis-h"></i></a>
+													<div class="dropdown-menu pull-right black lt"></div>
+												</div>
+												<div class="item-title text-ellipsis">
+													<a href="track.detail.html">I Wanna Be In the Cavalry</a>
+												</div>
+												<div class="item-author text-sm text-ellipsis">
+													<a href="artist.detail.html" class="text-muted">Jeremy
+														Scott</a>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+	<script src="/js/app.min.js"></script>
+</body>
+<!-- Mirrored from flatfull.com/themes/pulse/player.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 03 May 2017 22:07:59 GMT -->
+</html>
