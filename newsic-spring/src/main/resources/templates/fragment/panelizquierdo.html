@@ -11,13 +11,13 @@
 				<ul class="nav" data-ui-nav="data-ui-nav">
 					<li class="nav-header hidden-folded"><span
 						class="text-xs text-muted">Main</span></li>
-					<li><a href="#"><span class="nav-icon"><i
-								class="material-icons">play_circle_outline</i></span> <span
+					<!--  <li><a href="#"><span class="nav-icon">
+					<i class="material-icons">play_circle_outline</i></span> <span
 							class="nav-text">Discover</span></a></li>
 					<li><a href="#"><span class="nav-icon"><i
 								class="material-icons">sort</i></span> <span class="nav-text">Browse</span></a></li>
 					<li><a href="#"><span class="nav-icon"><i
-								class="material-icons">trending_up</i></span> <span class="nav-text">Charts</span></a></li>
+								class="material-icons">trending_up</i></span> <span class="nav-text">Charts</span></a></li>-->
 
 					<li><a th:href="@{/artistas}"><span class="nav-icon"><i
 								class="material-icons">portrait</i></span> <span class="nav-text">Artistas</span></a></li>
@@ -28,20 +28,21 @@
 					<li><a th:href="@{/generos}"><span class="nav-icon"><i
 								class="material-icons">portrait</i></span> <span class="nav-text">Generos</span></a></li>
 								
-
-
-
+					<!-- 
 					<li><a data-toggle="modal" data-target="#search-modal"><span
 							class="nav-icon"><i class="material-icons">search</i></span> <span
-							class="nav-text">Search</span></a></li>
+							class="nav-text">Search</span></a></li> -->
 					<li class="nav-header hidden-folded m-t"><span
 						class="text-xs text-muted">Your collection</span></li>
-					<li><a href="#"><span class="nav-label"><b
+					<li><a th:href="@{/artistas/profile}"><span class="nav-label"><b
 								class="label">8</b></span> <span class="nav-icon"><i
-								class="material-icons">list</i></span> <span class="nav-text">Tracks</span></a></li>
+								class="material-icons">list</i></span> <span class="nav-text">Tus albumes</span></a></li>
+					<li><a th:href="@{/artistas/profile}"><span class="nav-label"><b
+								class="label">8</b></span> <span class="nav-icon"><i
+								class="material-icons">list</i></span> <span class="nav-text">Tus canciones</span></a></li>
 					<li><a th:href="@{/playlist}"><span
 							class="nav-icon"><i class="material-icons">queue_music</i></span>
-							<span class="nav-text">Playlists</span></a></li>
+							<span class="nav-text">Tus playlist</span></a></li>
 					<li><a href="#"><span class="nav-icon"><i
 								class="material-icons">favorite_border</i></span> <span
 							class="nav-text">Likes</span></a></li>
@@ -57,14 +58,14 @@
 					class="clear hidden-folded p-x p-y-xs"><span
 						class="block _500 text-ellipsis" th:text="${usuario.nombre+' '+usuario.apellido}"></span></span></a>
 				<div class="dropdown-menu w dropdown-menu-scale">
-					<a class="dropdown-item" th:href="@{/artistas/profile}"><span>Profile</span></a>
+					<a class="dropdown-item" th:href="@{/artistas/profile}"><span>Tu perfil</span></a>
 					<a class="dropdown-item" href="#"><span>Tracks</span></a>
-					<a class="dropdown-item" th:href="@{/playlist}"><span>Playlists</span></a>
+					<a class="dropdown-item" th:href="@{/playlist}"><span>Tus playlist</span></a>
 					<a class="dropdown-item" href="#"><span>Likes</span></a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" th:href="@{/canciones/new}"><span>Add Song</span></a>
-						<a class="dropdown-item" th:href="@{/albumes/new}"><span>Add Album</span></a>
-						<a class="dropdown-item" th:href="@{/playlist/new}"><span>Add Playlist</span></a>
+						<a class="dropdown-item" th:href="@{/canciones/new}"><span>Agregar cancio</span></a>
+						<a class="dropdown-item" th:href="@{/albumes/new}"><span>Agregar Album</span></a>
+						<a class="dropdown-item" th:href="@{/playlist/new}"><span>Agregar Playlist</span></a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="#">Need help?</a> 
 					<form th:action="@{/logout}" method="post">

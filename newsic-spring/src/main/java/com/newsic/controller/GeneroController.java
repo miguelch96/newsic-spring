@@ -48,11 +48,15 @@ public class GeneroController {
 		} else {
 			model.addAttribute("generos", generoService.findByNombreContaining(filtro));
 		}
+		model.addAttribute("usuario", artistaService.findByUsuario(getUsuarioActual()));
+
 		return "listgeneros";
 	}
 	
 	@GetMapping("{generoid}")
 	public String vergenero(@PathVariable(name = "generoid") Long generoid,Model model) {
+		model.addAttribute("usuario", artistaService.findByUsuario(getUsuarioActual()));
+
 		return "redirect:/generos";
 	}
 	
